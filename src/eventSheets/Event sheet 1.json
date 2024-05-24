@@ -1,0 +1,21 @@
+{
+	"name": "Event sheet 1",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "mouse-button-is-down",
+					"objectClass": "Mouse",
+					"sid": 262620149995414,
+					"parameters": {
+						"mouse-button": "left"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 329358600990209
+		}
+	],
+	"sid": 640881692263834
+}
