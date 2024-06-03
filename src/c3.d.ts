@@ -1,5 +1,5 @@
 // NOTE: This definition file is auto generated - any changes you make will not be saved
-// 5/24/2024 3:00:23 AM
+// 6/2/2024 11:46:09 PM
 
 declare function runOnStartup(cb: (runtime: IRuntime) => void): void;
 
@@ -43,8 +43,16 @@ type VariableType = Record<string, string | boolean | number | null | undefined>
 
 interface IRuntimeObjects {
 	['Touch']: IObjectClass<ITouch>;
-	['Sprite']: IObjectClass<ISprite>;
+	['Tilemap']: IObjectClass<ITilemap>;
+	['SquareShotEffect']: IObjectClass<ISquareShotEffect>;
+	['ScreenBlocker']: IObjectClass<IScreenBlocker>;
 	['Player']: IObjectClass<IPlayer>;
+	['Mouse']: IObjectClass<IMouse>;
+	['Horizon']: IObjectClass<IHorizon>;
+	['ExplosionParticle']: IObjectClass<IExplosionParticle>;
+	['EggEnemy']: IObjectClass<IEggEnemy>;
+	['BulletHitParticles']: IObjectClass<IBulletHitParticles>;
+	['Bullet']: IObjectClass<IBullet>;
 	['Background']: IObjectClass<IBackground>;
 }
 
@@ -182,26 +190,118 @@ interface ITouch extends ITouchObjectType {
 	behaviors: ITouchBehaviors;
 }
 
-interface ISpriteVars extends VariableType {
+interface ITilemapVars extends VariableType {
 	
 }
-interface ISpriteBehaviors extends Record<string, IBehaviorInstance> {
+interface ITilemapBehaviors extends Record<string, IBehaviorInstance> {
 	
 }
-interface ISprite extends ISpriteInstance {
-	instVars: ISpriteVars;
-	behaviors: ISpriteBehaviors;
+interface ITilemap extends ITilemapInstance {
+	instVars: ITilemapVars;
+	behaviors: ITilemapBehaviors;
+}
+
+interface ISquareShotEffectVars extends VariableType {
+	
+}
+interface ISquareShotEffectBehaviors extends Record<string, IBehaviorInstance> {
+	['Rotate']: IBehaviorInstance
+	['DestroyOutsideLayout']: IBehaviorInstance
+}
+interface ISquareShotEffect extends ISpriteInstance {
+	instVars: ISquareShotEffectVars;
+	behaviors: ISquareShotEffectBehaviors;
+}
+
+interface IScreenBlockerVars extends VariableType {
+	
+}
+interface IScreenBlockerBehaviors extends Record<string, IBehaviorInstance> {
+	['Solid']: IBehaviorInstance
+}
+interface IScreenBlocker extends ISpriteInstance {
+	instVars: IScreenBlockerVars;
+	behaviors: IScreenBlockerBehaviors;
 }
 
 interface IPlayerVars extends VariableType {
 	
 }
 interface IPlayerBehaviors extends Record<string, IBehaviorInstance> {
-	
+	['8Direction']: I8DirectionBehaviorInstance
 }
 interface IPlayer extends ISpriteInstance {
 	instVars: IPlayerVars;
 	behaviors: IPlayerBehaviors;
+}
+
+interface IMouseVars extends VariableType {
+	
+}
+interface IMouseBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IMouse extends IMouseObjectType {
+	instVars: IMouseVars;
+	behaviors: IMouseBehaviors;
+}
+
+interface IHorizonVars extends VariableType {
+	
+}
+interface IHorizonBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IHorizon extends ISpriteInstance {
+	instVars: IHorizonVars;
+	behaviors: IHorizonBehaviors;
+}
+
+interface IExplosionParticleVars extends VariableType {
+	
+}
+interface IExplosionParticleBehaviors extends Record<string, IBehaviorInstance> {
+	['DestroyOutsideLayout']: IBehaviorInstance
+}
+interface IExplosionParticle extends IWorldInstance {
+	instVars: IExplosionParticleVars;
+	behaviors: IExplosionParticleBehaviors;
+}
+
+interface IEggEnemyVars extends VariableType {
+	
+}
+interface IEggEnemyBehaviors extends Record<string, IBehaviorInstance> {
+	['Sine']: IBehaviorInstance
+	['Bullet']: IBulletBehaviorInstance
+	['Sine2']: IBehaviorInstance
+}
+interface IEggEnemy extends ISpriteInstance {
+	instVars: IEggEnemyVars;
+	behaviors: IEggEnemyBehaviors;
+}
+
+interface IBulletHitParticlesVars extends VariableType {
+	
+}
+interface IBulletHitParticlesBehaviors extends Record<string, IBehaviorInstance> {
+	['DestroyOutsideLayout']: IBehaviorInstance
+}
+interface IBulletHitParticles extends IWorldInstance {
+	instVars: IBulletHitParticlesVars;
+	behaviors: IBulletHitParticlesBehaviors;
+}
+
+interface IBulletVars extends VariableType {
+	
+}
+interface IBulletBehaviors extends Record<string, IBehaviorInstance> {
+	['Bullet']: IBulletBehaviorInstance
+	['DestroyOutsideLayout']: IBehaviorInstance
+}
+interface IBullet extends ISpriteInstance {
+	instVars: IBulletVars;
+	behaviors: IBulletBehaviors;
 }
 
 interface IBackgroundVars extends VariableType {

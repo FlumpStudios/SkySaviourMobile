@@ -1,0 +1,27 @@
+{
+	"name": "ExplosionParticle",
+	"plugin-id": "Particles",
+	"sid": 319356569191516,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "destroy",
+			"name": "DestroyOutsideLayout",
+			"sid": 501109654518633
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 31,
+		"height": 28,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"imageSpriteId": 6265753,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

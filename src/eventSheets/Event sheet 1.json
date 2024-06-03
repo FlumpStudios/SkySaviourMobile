@@ -5,16 +5,21 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "mouse-button-is-down",
-					"objectClass": "Mouse",
-					"sid": 262620149995414,
-					"parameters": {
-						"mouse-button": "left"
-					}
+					"id": "is-visible",
+					"objectClass": "ElectricEffect",
+					"sid": 246553758161207,
+					"isInverted": true
 				}
 			],
-			"actions": [],
-			"sid": 329358600990209
+			"actions": [
+				{
+					"id": "start-fade",
+					"objectClass": "ElectricEffect",
+					"sid": 282726683437014,
+					"behaviorType": "Fade"
+				}
+			],
+			"sid": 778124062312872
 		}
 	],
 	"sid": 640881692263834

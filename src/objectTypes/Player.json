@@ -9,6 +9,16 @@
 			"behaviorId": "EightDir",
 			"name": "8Direction",
 			"sid": 855496828009797
+		},
+		{
+			"behaviorId": "Flash",
+			"name": "Flash",
+			"sid": 597754957903666
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "Sine",
+			"sid": 558031646666595
 		}
 	],
 	"effectTypes": [],
@@ -17,28 +27,28 @@
 			{
 				"frames": [
 					{
-						"width": 98,
-						"height": 70,
-						"originX": 0.4897959183673469,
-						"originY": 0.5,
+						"width": 15,
+						"height": 15,
+						"originX": 0.5,
+						"originY": 0.5384615384615384,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
-						"imageSpriteId": 4586017,
+						"imageSpriteId": 9289612,
 						"collisionPoly": {
 							"points": [
-								0.41836734693877553,
-								0.014285714285714285,
-								0.5816326530612245,
-								0.014285714285714285,
-								0.9897959183673469,
-								0.6428571428571429,
-								0.9897959183673469,
-								0.9857142857142858,
-								0.01020408163265306,
-								0.9857142857142858,
-								0.01020408163265306,
-								0.6428571428571429
+								0,
+								0,
+								1,
+								0,
+								1,
+								1,
+								1,
+								1,
+								0,
+								1,
+								0,
+								1
 							]
 						},
 						"useCollisionPoly": true,
@@ -46,28 +56,28 @@
 						"tag": ""
 					},
 					{
-						"width": 98,
-						"height": 70,
-						"originX": 0.4897959183673469,
-						"originY": 0.5,
+						"width": 15,
+						"height": 15,
+						"originX": 0.5,
+						"originY": 0.5384615384615384,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
-						"imageSpriteId": 7127557,
+						"imageSpriteId": 4229135,
 						"collisionPoly": {
 							"points": [
-								0.41836734693877553,
-								0.014285714285714285,
-								0.5816326530612245,
-								0.014285714285714285,
-								0.9897959183673469,
-								0.6428571428571429,
-								0.9897959183673469,
-								0.9857142857142858,
-								0.01020408163265306,
-								0.9857142857142858,
-								0.01020408163265306,
-								0.6428571428571429
+								0,
+								0,
+								1,
+								0,
+								1,
+								1,
+								1,
+								1,
+								0,
+								1,
+								0,
+								1
 							]
 						},
 						"useCollisionPoly": true,
@@ -76,7 +86,44 @@
 					}
 				],
 				"sid": 255590925299439,
-				"name": "Animation 1",
+				"name": "Normal",
+				"isLooping": true,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 10
+			},
+			{
+				"frames": [
+					{
+						"width": 16,
+						"height": 15,
+						"originX": 0.5,
+						"originY": 0.5333333333333333,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 3190821,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 16,
+						"height": 15,
+						"originX": 0.5,
+						"originY": 0.5333333333333333,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 3102537,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 753146735581508,
+				"name": "Charging",
 				"isLooping": true,
 				"isPingPong": false,
 				"repeatCount": 1,

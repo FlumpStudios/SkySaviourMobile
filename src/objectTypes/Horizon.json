@@ -1,7 +1,7 @@
 {
-	"name": "Background",
+	"name": "Horizon",
 	"plugin-id": "Sprite",
-	"sid": 921708158005800,
+	"sid": 771518853500626,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
@@ -11,22 +11,22 @@
 			{
 				"frames": [
 					{
-						"width": 720,
-						"height": 1280,
-						"originX": 0,
-						"originY": 0,
+						"width": 1,
+						"height": 1,
+						"originX": 0.5,
+						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
-						"imageSpriteId": 4176121,
+						"imageSpriteId": 9731430,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 562639410341347,
+				"sid": 613272542784819,
 				"name": "Animation 1",
-				"isLooping": true,
+				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,
 				"repeatTo": 0,

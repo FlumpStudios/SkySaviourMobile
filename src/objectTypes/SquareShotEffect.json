@@ -1,32 +1,43 @@
 {
-	"name": "Background",
+	"name": "SquareShotEffect",
 	"plugin-id": "Sprite",
-	"sid": 921708158005800,
+	"sid": 717957627574065,
 	"isGlobal": false,
 	"instanceVariables": [],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Rotate",
+			"name": "Rotate",
+			"sid": 421836560331377
+		},
+		{
+			"behaviorId": "destroy",
+			"name": "DestroyOutsideLayout",
+			"sid": 257985534396083
+		}
+	],
 	"effectTypes": [],
 	"animations": {
 		"items": [
 			{
 				"frames": [
 					{
-						"width": 720,
-						"height": 1280,
-						"originX": 0,
-						"originY": 0,
+						"width": 309,
+						"height": 300,
+						"originX": 0.4967637540453074,
+						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
-						"imageSpriteId": 4176121,
+						"imageSpriteId": 1349597,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 562639410341347,
+				"sid": 417185569053482,
 				"name": "Animation 1",
-				"isLooping": true,
+				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,
 				"repeatTo": 0,

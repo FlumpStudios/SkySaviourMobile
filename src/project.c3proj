@@ -15,8 +15,22 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Particles",
+			"name": "Particles",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Sprite",
 			"name": "Sprite",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Tilemap",
+			"name": "Tilemap",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -43,6 +57,41 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Fade",
+			"name": "Fade",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Flash",
+			"name": "Flash",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Rotate",
+			"name": "Rotate",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Sin",
+			"name": "Sine",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "destroy",
+			"name": "Destroy outside layout",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "solid",
 			"name": "Solid",
 			"author": "Scirra",
@@ -57,7 +106,15 @@
 			"Touch",
 			"Bullet",
 			"ScreenBlocker",
-			"Mouse"
+			"Mouse",
+			"Tilemap",
+			"Horizon",
+			"EggEnemy",
+			"BulletHitParticles",
+			"SquareShotEffect",
+			"ExplosionParticle",
+			"ElectricEffect",
+			"ChargeSparks"
 		],
 		"subfolders": []
 	},
@@ -118,6 +175,46 @@
 					"name": "bulletInst.js",
 					"type": "application/javascript",
 					"sid": 725501002732464,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "config.js",
+					"type": "application/javascript",
+					"sid": 306337366522220,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "enemyBase.js",
+					"type": "application/javascript",
+					"sid": 535982517267698,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "eggEnemyInst.js",
+					"type": "application/javascript",
+					"sid": 685316389451347,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "shapeExplosionEffectInst.js",
+					"type": "application/javascript",
+					"sid": 432638789709555,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "squareExplosionEffectInst.js",
+					"type": "application/javascript",
+					"sid": 239748091393128,
 					"script-info": {
 						"purpose": "none"
 					}
@@ -261,7 +358,7 @@
 		"scriptsType": "module",
 		"framerateMode": "vsync",
 		"compositingMode": "standard",
-		"sampling": "trilinear",
+		"sampling": "nearest",
 		"downscaling": "medium",
 		"renderingMode": "auto",
 		"anisotropicFiltering": "auto",

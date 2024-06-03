@@ -1,8 +1,10 @@
 import { waitForMillisecond, isMirrored } from "./utils.js"
+import * as config from "./config.js";
 
 export default class PlayerInst extends globalThis.ISpriteInstance {
     #lastx = 0;
     #lasty = 0;
+    #shotCounter = 0;
 
     constructor() {
         super();
@@ -36,7 +38,43 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         }
     }
 
+    spawnBullet(runtime) {
+        this.#shotCounter += runtime.dt;
+        if (this.#shotCounter > config.shotInteval) {
+            runtime.objects.Bullet.createInstance(config.layers.player, this.x + config.shotOffsets.x, this.y + config.shotOffsets.y);
+            this.#shotCounter = 0;
+        }
+    }
+
     update = (runtime) => {
+        const elec = runtime.objects.ElectricEffect.getFirstInstance();
+        const chargeSparks = runtime.objects.ChargeSparks.getFirstInstance();
+        if (this.y < runtime.objects.Horizon.getFirstInstance().y + (this.width / 2)) {
+            this.spawnBullet(runtime);
+            elec.isVisible = false;
+            this.behaviors["Sine"].isEnabled = false;
+            this.opacity = 1;            
+            chargeSparks.isEnabled = false;            
+            chargeSparks.isVisible = false;            
+            chargeSparks.x = -1000;
+            chargeSparks.y = -1000;
+            
+            console.log(chargeSparks);
+        }
+        else {
+            chargeSparks.x = this.x;
+            chargeSparks.y = this.y;
+            elec.isVisible = true;
+            chargeSparks.isEnabled = true;
+            this.behaviors["Sine"].isEnabled = true;
+            chargeSparks.isVisible = true;
+        }
+
+
+        //elec.x = this.x;
+        elec.y = this.y;
+        
+
         this.controls(runtime);
     };
 }
