@@ -1,0 +1,86 @@
+{
+	"name": "Bullet_UI",
+	"plugin-id": "Sprite",
+	"sid": 931345850248514,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 21,
+						"height": 70,
+						"originX": 0.47619047619047616,
+						"originY": 0.4714285714285714,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 5190431,
+						"collisionPoly": {
+							"points": [
+								0.047619047619047616,
+								0,
+								1,
+								0,
+								1,
+								1,
+								0.047619047619047616,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 879748638435650,
+				"name": "Full",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 21,
+						"height": 70,
+						"originX": 0.47619047619047616,
+						"originY": 0.4714285714285714,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 2067084,
+						"collisionPoly": {
+							"points": [
+								0.047619047619047616,
+								0,
+								1,
+								0,
+								1,
+								1,
+								0.047619047619047616,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 973896930199965,
+				"name": "Empty",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

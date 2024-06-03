@@ -1,5 +1,5 @@
 // NOTE: This definition file is auto generated - any changes you make will not be saved
-// 6/2/2024 11:46:09 PM
+// 6/3/2024 11:26:20 PM
 
 declare function runOnStartup(cb: (runtime: IRuntime) => void): void;
 
@@ -50,7 +50,9 @@ interface IRuntimeObjects {
 	['Mouse']: IObjectClass<IMouse>;
 	['Horizon']: IObjectClass<IHorizon>;
 	['ExplosionParticle']: IObjectClass<IExplosionParticle>;
+	['ElectricEffect']: IObjectClass<IElectricEffect>;
 	['EggEnemy']: IObjectClass<IEggEnemy>;
+	['ChargeSparks']: IObjectClass<IChargeSparks>;
 	['BulletHitParticles']: IObjectClass<IBulletHitParticles>;
 	['Bullet']: IObjectClass<IBullet>;
 	['Background']: IObjectClass<IBackground>;
@@ -229,6 +231,8 @@ interface IPlayerVars extends VariableType {
 }
 interface IPlayerBehaviors extends Record<string, IBehaviorInstance> {
 	['8Direction']: I8DirectionBehaviorInstance
+	['Flash']: IBehaviorInstance
+	['Sine']: IBehaviorInstance
 }
 interface IPlayer extends ISpriteInstance {
 	instVars: IPlayerVars;
@@ -268,6 +272,17 @@ interface IExplosionParticle extends IWorldInstance {
 	behaviors: IExplosionParticleBehaviors;
 }
 
+interface IElectricEffectVars extends VariableType {
+	
+}
+interface IElectricEffectBehaviors extends Record<string, IBehaviorInstance> {
+	['Fade']: IBehaviorInstance
+}
+interface IElectricEffect extends ISpriteInstance {
+	instVars: IElectricEffectVars;
+	behaviors: IElectricEffectBehaviors;
+}
+
 interface IEggEnemyVars extends VariableType {
 	
 }
@@ -279,6 +294,17 @@ interface IEggEnemyBehaviors extends Record<string, IBehaviorInstance> {
 interface IEggEnemy extends ISpriteInstance {
 	instVars: IEggEnemyVars;
 	behaviors: IEggEnemyBehaviors;
+}
+
+interface IChargeSparksVars extends VariableType {
+	
+}
+interface IChargeSparksBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IChargeSparks extends IWorldInstance {
+	instVars: IChargeSparksVars;
+	behaviors: IChargeSparksBehaviors;
 }
 
 interface IBulletHitParticlesVars extends VariableType {

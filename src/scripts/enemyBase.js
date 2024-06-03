@@ -17,7 +17,7 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 				this.isVisible = false;
 				waitForMillisecond(10).then(() => this.isVisible = true);
 				runtime.objects.BulletHitParticles.createInstance(config.layers.player, bullet.x, bullet.y);
-                bullet.destroy();
+                bullet.y = -200;
             }
         }	
 	}

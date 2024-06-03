@@ -29,6 +29,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Spritefont2",
+			"name": "Sprite font",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Tilemap",
 			"name": "Tilemap",
 			"author": "Scirra",
@@ -96,6 +103,20 @@
 			"name": "Solid",
 			"author": "Scirra",
 			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "glowhorizontal",
+			"name": "Glow horizontal",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "scanlines",
+			"name": "Scan lines",
+			"author": "Scirra",
+			"bundled": false
 		}
 	],
 	"uniqueId": "x3qv0ksm0lq",
@@ -114,7 +135,13 @@
 			"SquareShotEffect",
 			"ExplosionParticle",
 			"ElectricEffect",
-			"ChargeSparks"
+			"ChargeSparks",
+			"Score",
+			"Score2",
+			"Score3",
+			"Score4",
+			"UiShell",
+			"Bullet_UI"
 		],
 		"subfolders": []
 	},
@@ -126,13 +153,15 @@
 	},
 	"layouts": {
 		"items": [
-			"Layout 1"
+			"Layout 1",
+			"Layout 2"
 		],
 		"subfolders": []
 	},
 	"eventSheets": {
 		"items": [
-			"Event sheet 1"
+			"Event sheet 1",
+			"Event sheet 2"
 		],
 		"subfolders": []
 	},
