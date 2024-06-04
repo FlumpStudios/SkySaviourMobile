@@ -209,9 +209,6 @@
 								"enabled": true
 							}
 						},
-						"Flash": {
-							"properties": {}
-						},
 						"Sine": {
 							"properties": {
 								"movement": "opacity",
@@ -228,8 +225,8 @@
 						}
 					},
 					"world": {
-						"x": 334,
-						"y": 642,
+						"x": 376,
+						"y": 528,
 						"width": 69.96305134107426,
 						"height": 70.66770584544696,
 						"originX": 0.5333333333333333,

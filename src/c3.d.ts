@@ -1,5 +1,5 @@
 // NOTE: This definition file is auto generated - any changes you make will not be saved
-// 6/3/2024 11:26:20 PM
+// 6/4/2024 11:16:25 PM
 
 declare function runOnStartup(cb: (runtime: IRuntime) => void): void;
 
@@ -42,10 +42,15 @@ declare var IRuntime:  { new(): IRuntime };
 type VariableType = Record<string, string | boolean | number | null | undefined>;
 
 interface IRuntimeObjects {
+	['UiShell']: IObjectClass<IUiShell>;
 	['Touch']: IObjectClass<ITouch>;
 	['Tilemap']: IObjectClass<ITilemap>;
 	['SquareShotEffect']: IObjectClass<ISquareShotEffect>;
 	['ScreenBlocker']: IObjectClass<IScreenBlocker>;
+	['Score4']: IObjectClass<IScore4>;
+	['Score3']: IObjectClass<IScore3>;
+	['Score2']: IObjectClass<IScore2>;
+	['Score']: IObjectClass<IScore>;
 	['Player']: IObjectClass<IPlayer>;
 	['Mouse']: IObjectClass<IMouse>;
 	['Horizon']: IObjectClass<IHorizon>;
@@ -53,6 +58,7 @@ interface IRuntimeObjects {
 	['ElectricEffect']: IObjectClass<IElectricEffect>;
 	['EggEnemy']: IObjectClass<IEggEnemy>;
 	['ChargeSparks']: IObjectClass<IChargeSparks>;
+	['Bullet_UI']: IObjectClass<IBullet_UI>;
 	['BulletHitParticles']: IObjectClass<IBulletHitParticles>;
 	['Bullet']: IObjectClass<IBullet>;
 	['Background']: IObjectClass<IBackground>;
@@ -181,6 +187,17 @@ interface IObjectClass<T = IInstance> {
 }
 declare var IObjectClass: { new(): IObjectClass };
 
+interface IUiShellVars extends VariableType {
+	
+}
+interface IUiShellBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IUiShell extends ISpriteInstance {
+	instVars: IUiShellVars;
+	behaviors: IUiShellBehaviors;
+}
+
 interface ITouchVars extends VariableType {
 	
 }
@@ -224,6 +241,50 @@ interface IScreenBlockerBehaviors extends Record<string, IBehaviorInstance> {
 interface IScreenBlocker extends ISpriteInstance {
 	instVars: IScreenBlockerVars;
 	behaviors: IScreenBlockerBehaviors;
+}
+
+interface IScore4Vars extends VariableType {
+	
+}
+interface IScore4Behaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IScore4 extends IWorldInstance {
+	instVars: IScore4Vars;
+	behaviors: IScore4Behaviors;
+}
+
+interface IScore3Vars extends VariableType {
+	
+}
+interface IScore3Behaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IScore3 extends IWorldInstance {
+	instVars: IScore3Vars;
+	behaviors: IScore3Behaviors;
+}
+
+interface IScore2Vars extends VariableType {
+	
+}
+interface IScore2Behaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IScore2 extends IWorldInstance {
+	instVars: IScore2Vars;
+	behaviors: IScore2Behaviors;
+}
+
+interface IScoreVars extends VariableType {
+	
+}
+interface IScoreBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IScore extends IWorldInstance {
+	instVars: IScoreVars;
+	behaviors: IScoreBehaviors;
 }
 
 interface IPlayerVars extends VariableType {
@@ -307,6 +368,17 @@ interface IChargeSparks extends IWorldInstance {
 	behaviors: IChargeSparksBehaviors;
 }
 
+interface IBullet_UIVars extends VariableType {
+	
+}
+interface IBullet_UIBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IBullet_UI extends ISpriteInstance {
+	instVars: IBullet_UIVars;
+	behaviors: IBullet_UIBehaviors;
+}
+
 interface IBulletHitParticlesVars extends VariableType {
 	
 }
@@ -323,7 +395,6 @@ interface IBulletVars extends VariableType {
 }
 interface IBulletBehaviors extends Record<string, IBehaviorInstance> {
 	['Bullet']: IBulletBehaviorInstance
-	['DestroyOutsideLayout']: IBehaviorInstance
 }
 interface IBullet extends ISpriteInstance {
 	instVars: IBulletVars;

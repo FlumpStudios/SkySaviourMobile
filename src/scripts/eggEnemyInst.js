@@ -4,7 +4,7 @@ import enemyBase from "./enemyBase.js";
 export default class EggEnemyInst extends enemyBase {
     constructor() {
         super();
-        this.health = 10;
+        this.health = 0;
     }
 
     update(runtime) {

@@ -7,3 +7,5 @@ export const layers = {
 export const shotInteval = 0.15;
 export const shotOffsets = { x: 3, y: -45 }
 export const shapeEffectShrinkSpeed = 1750;
+export const maxBulletCount = 8;
+export const chargeInteval = 0.25;
