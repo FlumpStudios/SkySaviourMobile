@@ -1,5 +1,5 @@
 // NOTE: This definition file is auto generated - any changes you make will not be saved
-// 6/4/2024 11:16:25 PM
+// 6/5/2024 10:24:04 PM
 
 declare function runOnStartup(cb: (runtime: IRuntime) => void): void;
 
@@ -292,7 +292,6 @@ interface IPlayerVars extends VariableType {
 }
 interface IPlayerBehaviors extends Record<string, IBehaviorInstance> {
 	['8Direction']: I8DirectionBehaviorInstance
-	['Flash']: IBehaviorInstance
 	['Sine']: IBehaviorInstance
 }
 interface IPlayer extends ISpriteInstance {

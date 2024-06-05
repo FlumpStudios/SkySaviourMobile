@@ -7,8 +7,7 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 	constructor() {
 		super();
 	}
-
-
+	
 	checkBulletCollision(runtime) {
 		for (const bullet of runtime.objects.Bullet.instances()) {
 			if (bullet.testOverlap(this)) {
@@ -21,13 +20,18 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 				}
 
 				);
-				runtime.objects.BulletHitParticles.createInstance(config.layers.player, bullet.x, bullet.y);
+				runtime.objects.BulletHitParticles.createInstance(config.layers.game, bullet.x, bullet.y);
 				bullet.y = -200;
 			}
 		}
 	}
 
 	update(runtime) {
+		// May as well destory all enemies if the end up past the bottom of the screen.
+		if(config.isOutsideBottomOfLayout){
+			this.destroy();
+		}
+
 		this.checkBulletCollision(runtime);
 	}
 }

@@ -2,6 +2,7 @@ import PlayerInst from "./playerInst.js";
 import BulletInst from "./bulletInst.js";
 import EggEnemyInst from "./eggEnemyInst.js";
 import SquareExplosionEffectInst from "./shapeExplosionEffectInst.js";
+import EggSpawnerInst from "./eggSpawnerInst.js";
 
 runOnStartup(async runtime => {
 	runtime.addEventListener("beforeprojectstart", () => OnBeforeProjectStart(runtime));
@@ -9,6 +10,7 @@ runOnStartup(async runtime => {
 	runtime.objects.Bullet.setInstanceClass(BulletInst);
 	runtime.objects.EggEnemy.setInstanceClass(EggEnemyInst);
 	runtime.objects.SquareShotEffect.setInstanceClass(SquareExplosionEffectInst);
+	runtime.objects.EggSpawner.setInstanceClass(EggSpawnerInst);
 });
 
 async function OnBeforeProjectStart(runtime) {
@@ -37,6 +39,10 @@ function Tick(runtime) {
 
 	for (const egg of runtime.objects.EggEnemy.instances()) {
 		egg.update(runtime);
+	}
+
+	for (const eggSpawner of runtime.objects.EggSpawner.instances()) {
+		eggSpawner.update(runtime);
 	}
 
 	for (const squareExplosionEffect of runtime.objects.SquareShotEffect.instances()) {

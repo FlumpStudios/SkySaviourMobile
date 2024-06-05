@@ -134,7 +134,9 @@
 			"Score3",
 			"Score4",
 			"UiShell",
-			"Bullet_UI"
+			"Bullet_UI",
+			"ChargeWarning",
+			"EggSpawner"
 		],
 		"subfolders": []
 	},
@@ -237,6 +239,14 @@
 					"name": "squareExplosionEffectInst.js",
 					"type": "application/javascript",
 					"sid": 239748091393128,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "eggSpawnerInst.js",
+					"type": "application/javascript",
+					"sid": 811659395247307,
 					"script-info": {
 						"purpose": "none"
 					}

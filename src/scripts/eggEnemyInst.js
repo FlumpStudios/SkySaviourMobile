@@ -10,8 +10,8 @@ export default class EggEnemyInst extends enemyBase {
     update(runtime) {
         super.update(runtime);
         if (this.health < 0) {
-            runtime.objects.SquareShotEffect.createInstance(config.layers.player, this.x, this.y);
-            runtime.objects.ExplosionParticle.createInstance(config.layers.player, this.x, this.y);
+            runtime.objects.SquareShotEffect.createInstance(config.layers.game, this.x, this.y);
+            runtime.objects.ExplosionParticle.createInstance(config.layers.game, this.x, this.y);
  
             this.destroy();
         }

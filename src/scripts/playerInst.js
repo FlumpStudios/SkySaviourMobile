@@ -56,20 +56,35 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
     spawnBullet(runtime) {
         this.#shotCounter += runtime.dt;
         if (this.#shotCounter > config.shotInteval) {
-            runtime.objects.Bullet.createInstance(config.layers.player, this.x + config.shotOffsets.x, this.y + config.shotOffsets.y);
+            runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x, this.y + config.shotOffsets.y);
             this.#shotCounter = 0;
         }
     }
 
     removeBullet = () => this.#bulletCount --;
-    addBullet = () => { 
-        if(this.#bulletCount < config.maxBulletCount)
-        this.#bulletCount ++ 
+    addBullet = () => {
+        if (this.#bulletCount < config.maxBulletCount)
+            this.#bulletCount ++
     };
     getBulletCount = () => this.#bulletCount;
     getIsCharging = () => this.#isCharging;
 
+    handleWarning = (runtime) => {
+        const warningMessage = runtime.objects.ChargeWarning.getFirstInstance();
+
+        if (this.#bulletCount <= 0) {
+            warningMessage.isVisible = true;
+        }
+        else {
+            warningMessage.isVisible = false;
+        }
+
+        warningMessage.x = this.x;
+        warningMessage.y = this.y + ((this.height / 2) + 10);
+    }
+
     update = (runtime) => {
+        this.handleWarning(runtime);
         const elec = runtime.objects.ElectricEffect.getFirstInstance();
         const chargeSparks = runtime.objects.ChargeSparks.getFirstInstance();
         runtime.objects.ChargeSparks.getFirstInstance();
@@ -84,6 +99,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
             }
         }
         // Bullet charging
+        // TODO: Clean this up
         if (this.y < runtime.objects.Horizon.getFirstInstance().y + (this.width / 2)) {
             elec.isVisible = false;
             this.behaviors["Sine"].isEnabled = false;
@@ -97,15 +113,28 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         }
         else {
             this.#isCharging = true;
-            chargeSparks.x = this.x;
-            chargeSparks.y = this.y;
-            elec.isVisible = true;
-            chargeSparks.isEnabled = true;
-            this.behaviors["Sine"].isEnabled = true;
-            chargeSparks.isVisible = true;
-            this.#chargeTicker += runtime.dt;
-            if (this.#chargeTicker > config.chargeInteval) {
-                this.addBullet();
+
+            if (this.#bulletCount < config.maxBulletCount) {
+                chargeSparks.x = this.x;
+                chargeSparks.y = this.y;
+                chargeSparks.isEnabled = true;
+                elec.isVisible = true;
+                this.behaviors["Sine"].isEnabled = true;
+                chargeSparks.isVisible = true;
+                this.#chargeTicker += runtime.dt;
+                if (this.#chargeTicker > config.chargeInteval) {
+                    this.addBullet();
+                    this.#chargeTicker = 0;
+                }
+            }
+            else {
+                elec.isVisible = false;
+                this.behaviors["Sine"].isEnabled = false;
+                this.opacity = 1;
+                chargeSparks.isEnabled = false;
+                chargeSparks.isVisible = false;
+                chargeSparks.x = -1000;
+                chargeSparks.y = -1000;
                 this.#chargeTicker = 0;
             }
         }
