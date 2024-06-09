@@ -1,5 +1,5 @@
 // NOTE: This definition file is auto generated - any changes you make will not be saved
-// 6/5/2024 10:24:04 PM
+// 6/8/2024 9:26:27 PM
 
 declare function runOnStartup(cb: (runtime: IRuntime) => void): void;
 
@@ -56,7 +56,9 @@ interface IRuntimeObjects {
 	['Horizon']: IObjectClass<IHorizon>;
 	['ExplosionParticle']: IObjectClass<IExplosionParticle>;
 	['ElectricEffect']: IObjectClass<IElectricEffect>;
+	['EggSpawner']: IObjectClass<IEggSpawner>;
 	['EggEnemy']: IObjectClass<IEggEnemy>;
+	['ChargeWarning']: IObjectClass<IChargeWarning>;
 	['ChargeSparks']: IObjectClass<IChargeSparks>;
 	['Bullet_UI']: IObjectClass<IBullet_UI>;
 	['BulletHitParticles']: IObjectClass<IBulletHitParticles>;
@@ -343,6 +345,17 @@ interface IElectricEffect extends ISpriteInstance {
 	behaviors: IElectricEffectBehaviors;
 }
 
+interface IEggSpawnerVars extends VariableType {
+	
+}
+interface IEggSpawnerBehaviors extends Record<string, IBehaviorInstance> {
+	['Sine']: IBehaviorInstance
+}
+interface IEggSpawner extends ISpriteInstance {
+	instVars: IEggSpawnerVars;
+	behaviors: IEggSpawnerBehaviors;
+}
+
 interface IEggEnemyVars extends VariableType {
 	
 }
@@ -354,6 +367,17 @@ interface IEggEnemyBehaviors extends Record<string, IBehaviorInstance> {
 interface IEggEnemy extends ISpriteInstance {
 	instVars: IEggEnemyVars;
 	behaviors: IEggEnemyBehaviors;
+}
+
+interface IChargeWarningVars extends VariableType {
+	
+}
+interface IChargeWarningBehaviors extends Record<string, IBehaviorInstance> {
+	['Sine']: IBehaviorInstance
+}
+interface IChargeWarning extends IWorldInstance {
+	instVars: IChargeWarningVars;
+	behaviors: IChargeWarningBehaviors;
 }
 
 interface IChargeSparksVars extends VariableType {

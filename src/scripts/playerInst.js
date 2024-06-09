@@ -54,10 +54,13 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
     }
 
     spawnBullet(runtime) {
-        this.#shotCounter += runtime.dt;
-        if (this.#shotCounter > config.shotInteval) {
-            runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x, this.y + config.shotOffsets.y);
-            this.#shotCounter = 0;
+        if (this.getBulletCount() >= 0) {
+            this.#shotCounter += runtime.dt;
+            if (this.#shotCounter > config.shotInteval) {
+                runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x, this.y + config.shotOffsets.y);
+                this.#shotCounter = 0;
+                this.removeBullet();
+            }
         }
     }
 
@@ -72,7 +75,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
     handleWarning = (runtime) => {
         const warningMessage = runtime.objects.ChargeWarning.getFirstInstance();
 
-        if (this.#bulletCount <= 0) {
+        if (this.#bulletCount < 0) {
             warningMessage.isVisible = true;
         }
         else {
@@ -110,8 +113,10 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
             chargeSparks.y = -1000;
             this.#isCharging = false;
             this.#chargeTicker = 0;
+            this.spawnBullet(runtime);
         }
         else {
+            this.#shotCounter = config.shotInteval
             this.#isCharging = true;
 
             if (this.#bulletCount < config.maxBulletCount) {

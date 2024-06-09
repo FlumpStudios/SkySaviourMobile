@@ -3,11 +3,12 @@ import { waitForMillisecond } from "./utils.js";
 
 export default class EnemyBase extends globalThis.ISpriteInstance {
 	health = 0;
+	isSeaking = false;
 
 	constructor() {
 		super();
 	}
-	
+
 	checkBulletCollision(runtime) {
 		for (const bullet of runtime.objects.Bullet.instances()) {
 			if (bullet.testOverlap(this)) {
@@ -28,9 +29,11 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 
 	update(runtime) {
 		// May as well destory all enemies if the end up past the bottom of the screen.
-		if(config.isOutsideBottomOfLayout){
+		if (config.isOutsideBottomOfLayout) {
 			this.destroy();
 		}
+
+		if (this.y < runtime.objects.Horizon.getFirstInstance().y + (this.width / 2)) { }
 
 		this.checkBulletCollision(runtime);
 	}
