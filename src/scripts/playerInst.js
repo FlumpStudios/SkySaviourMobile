@@ -1,4 +1,7 @@
 import * as config from "./config.js";
+import { getEnemyHasReachedCity } from "./global.js";
+import { waitForMillisecond } from "./utils.js";
+
 
 export default class PlayerInst extends globalThis.ISpriteInstance {
     #bulletCount = config.maxBulletCount;
@@ -8,6 +11,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
     #isCharging = false;
     #lastx = 0;
     #chargeTicker = 0;
+    #isInDestroyingCityState = false;
 
     constructor() {
         super();
@@ -54,7 +58,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
     }
 
     spawnBullet(runtime) {
-        if (this.getBulletCount() >= 0) {
+        if (this.getBulletCount() >= 0 && !getEnemyHasReachedCity()) {
             this.#shotCounter += runtime.dt;
             if (this.#shotCounter > config.shotInteval) {
                 runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x, this.y + config.shotOffsets.y);
@@ -84,6 +88,10 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
 
         warningMessage.x = this.x;
         warningMessage.y = this.y + ((this.height / 2) + 10);
+    }
+
+    #spawnCityExplosion = (runtime, delay, x, y) => {
+        waitForMillisecond(delay).then(() => runtime.objects.CityExplosion.createInstance(config.layers.game, x, y));
     }
 
     update = (runtime) => {
@@ -145,6 +153,36 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         }
 
         elec.y = this.y;
-        this.controls(runtime);
+        if (getEnemyHasReachedCity()) {
+            this.behaviors["8Direction"].isEnabled = false;
+            if (!this.#isInDestroyingCityState) {
+                this.#isInDestroyingCityState = true;
+                this.#spawnCityExplosion(runtime, 0, 160, 998);
+                this.#spawnCityExplosion(runtime, 50,438, 1014);
+                this.#spawnCityExplosion(runtime, 100, 574, 990);
+                this.#spawnCityExplosion(runtime, 150, 74, 1134);
+                this.#spawnCityExplosion(runtime, 200, 328, 1128);
+                this.#spawnCityExplosion(runtime, 250, 506, 1118);
+                this.#spawnCityExplosion(runtime, 300, 640, 1108);
+                this.#spawnCityExplosion(runtime, 350, 204, 1208);
+                this.#spawnCityExplosion(runtime, 400, 410, 1220);
+                this.#spawnCityExplosion(runtime, 450, 602, 1218);
+
+                this.#spawnCityExplosion(runtime, 500, 160, 998);
+                this.#spawnCityExplosion(runtime, 550,438, 1014);
+                this.#spawnCityExplosion(runtime, 600, 574, 990);
+                this.#spawnCityExplosion(runtime, 650, 74, 1134);
+                this.#spawnCityExplosion(runtime, 700, 328, 1128);
+                this.#spawnCityExplosion(runtime, 750, 506, 1118);
+                this.#spawnCityExplosion(runtime, 800, 640, 1108);
+                this.#spawnCityExplosion(runtime, 850, 204, 1208);
+                this.#spawnCityExplosion(runtime, 900, 410, 1220);
+                this.#spawnCityExplosion(runtime, 950, 602, 1218);
+            }
+        }
+        else {
+            this.controls(runtime);
+            this.behaviors["8Direction"].isEnabled = true;
+        }
     };
 }

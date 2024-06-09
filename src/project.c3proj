@@ -258,6 +258,14 @@
 					"script-info": {
 						"purpose": "none"
 					}
+				},
+				{
+					"name": "global.js",
+					"type": "application/javascript",
+					"sid": 247791154823944,
+					"script-info": {
+						"purpose": "none"
+					}
 				}
 			],
 			"subfolders": []

@@ -1,5 +1,5 @@
 // NOTE: This definition file is auto generated - any changes you make will not be saved
-// 6/8/2024 9:26:27 PM
+// 6/9/2024 9:37:09 AM
 
 declare function runOnStartup(cb: (runtime: IRuntime) => void): void;
 
@@ -55,6 +55,7 @@ interface IRuntimeObjects {
 	['Mouse']: IObjectClass<IMouse>;
 	['Horizon']: IObjectClass<IHorizon>;
 	['ExplosionParticle']: IObjectClass<IExplosionParticle>;
+	['Explosion']: IObjectClass<IExplosion>;
 	['ElectricEffect']: IObjectClass<IElectricEffect>;
 	['EggSpawner']: IObjectClass<IEggSpawner>;
 	['EggEnemy']: IObjectClass<IEggEnemy>;
@@ -334,6 +335,17 @@ interface IExplosionParticle extends IWorldInstance {
 	behaviors: IExplosionParticleBehaviors;
 }
 
+interface IExplosionVars extends VariableType {
+	
+}
+interface IExplosionBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IExplosion extends ISpriteInstance {
+	instVars: IExplosionVars;
+	behaviors: IExplosionBehaviors;
+}
+
 interface IElectricEffectVars extends VariableType {
 	
 }
@@ -395,7 +407,7 @@ interface IBullet_UIVars extends VariableType {
 	
 }
 interface IBullet_UIBehaviors extends Record<string, IBehaviorInstance> {
-	
+	['Pin']: IBehaviorInstance
 }
 interface IBullet_UI extends ISpriteInstance {
 	instVars: IBullet_UIVars;
