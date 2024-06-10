@@ -1,11 +1,41 @@
 {
-	"name": "Layout 2",
+	"name": "MainMenu",
 	"layers": [
 		{
 			"name": "Layer 0",
 			"overriden": 0,
 			"subLayers": [],
-			"instances": [],
+			"instances": [
+				{
+					"type": "StartGame",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 41,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 287,
+						"y": 260,
+						"width": 111,
+						"height": 26,
+						"originX": 0.5045045045045045,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				}
+			],
 			"sid": 599944866567503,
 			"effectTypes": [],
 			"isInitiallyVisible": true,

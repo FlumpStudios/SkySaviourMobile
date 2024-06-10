@@ -1,7 +1,7 @@
 {
-	"name": "Score3",
+	"name": "ScoreLabel",
 	"plugin-id": "Spritefont2",
-	"sid": 859026067680884,
+	"sid": 831250644479915,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
@@ -14,7 +14,7 @@
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
-		"imageSpriteId": 931079,
+		"imageSpriteId": 7380182,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

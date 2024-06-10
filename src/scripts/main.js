@@ -3,6 +3,9 @@ import BulletInst from "./bulletInst.js";
 import EggEnemyInst from "./eggEnemyInst.js";
 import SquareExplosionEffectInst from "./shapeExplosionEffectInst.js";
 import EggSpawnerInst from "./eggSpawnerInst.js";
+import { runGamescript } from "./gameScript.js";
+import { resetAllGlobals } from "./global.js";
+import * as config from "./config.js";
 
 runOnStartup(async runtime => {
 	runtime.addEventListener("beforeprojectstart", () => OnBeforeProjectStart(runtime));
@@ -23,7 +26,13 @@ async function OnBeforeProjectStart(runtime) {
 }
 
 function Tick(runtime) {
-
+	const currentLayout = runtime.layout.name;
+	if (currentLayout === config.gameLayoutName) {
+		runGamescript(runtime);
+	}
+	else {
+		resetAllGlobals();
+	}
 
 	for (const player of runtime.objects.Player.instances()) {
 		player.update(runtime);

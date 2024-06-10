@@ -1,5 +1,5 @@
 // NOTE: This definition file is auto generated - any changes you make will not be saved
-// 6/9/2024 9:37:09 AM
+// 6/10/2024 9:32:32 PM
 
 declare function runOnStartup(cb: (runtime: IRuntime) => void): void;
 
@@ -45,6 +45,7 @@ interface IRuntimeObjects {
 	['UiShell']: IObjectClass<IUiShell>;
 	['Touch']: IObjectClass<ITouch>;
 	['Tilemap']: IObjectClass<ITilemap>;
+	['StartGame']: IObjectClass<IStartGame>;
 	['SquareShotEffect']: IObjectClass<ISquareShotEffect>;
 	['ScreenBlocker']: IObjectClass<IScreenBlocker>;
 	['Score4']: IObjectClass<IScore4>;
@@ -53,18 +54,20 @@ interface IRuntimeObjects {
 	['Score']: IObjectClass<IScore>;
 	['Player']: IObjectClass<IPlayer>;
 	['Mouse']: IObjectClass<IMouse>;
+	['Life_UI']: IObjectClass<ILife_UI>;
 	['Horizon']: IObjectClass<IHorizon>;
 	['ExplosionParticle']: IObjectClass<IExplosionParticle>;
-	['Explosion']: IObjectClass<IExplosion>;
 	['ElectricEffect']: IObjectClass<IElectricEffect>;
 	['EggSpawner']: IObjectClass<IEggSpawner>;
 	['EggEnemy']: IObjectClass<IEggEnemy>;
+	['CityExplosion']: IObjectClass<ICityExplosion>;
 	['ChargeWarning']: IObjectClass<IChargeWarning>;
 	['ChargeSparks']: IObjectClass<IChargeSparks>;
 	['Bullet_UI']: IObjectClass<IBullet_UI>;
 	['BulletHitParticles']: IObjectClass<IBulletHitParticles>;
 	['Bullet']: IObjectClass<IBullet>;
 	['Background']: IObjectClass<IBackground>;
+	['Audio']: IObjectClass<IAudio>;
 }
 
 interface IGlobalVars extends VariableType {
@@ -223,6 +226,17 @@ interface ITilemap extends ITilemapInstance {
 	behaviors: ITilemapBehaviors;
 }
 
+interface IStartGameVars extends VariableType {
+	
+}
+interface IStartGameBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IStartGame extends ISpriteInstance {
+	instVars: IStartGameVars;
+	behaviors: IStartGameBehaviors;
+}
+
 interface ISquareShotEffectVars extends VariableType {
 	
 }
@@ -313,6 +327,17 @@ interface IMouse extends IMouseObjectType {
 	behaviors: IMouseBehaviors;
 }
 
+interface ILife_UIVars extends VariableType {
+	
+}
+interface ILife_UIBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface ILife_UI extends ISpriteInstance {
+	instVars: ILife_UIVars;
+	behaviors: ILife_UIBehaviors;
+}
+
 interface IHorizonVars extends VariableType {
 	
 }
@@ -333,17 +358,6 @@ interface IExplosionParticleBehaviors extends Record<string, IBehaviorInstance> 
 interface IExplosionParticle extends IWorldInstance {
 	instVars: IExplosionParticleVars;
 	behaviors: IExplosionParticleBehaviors;
-}
-
-interface IExplosionVars extends VariableType {
-	
-}
-interface IExplosionBehaviors extends Record<string, IBehaviorInstance> {
-	
-}
-interface IExplosion extends ISpriteInstance {
-	instVars: IExplosionVars;
-	behaviors: IExplosionBehaviors;
 }
 
 interface IElectricEffectVars extends VariableType {
@@ -379,6 +393,17 @@ interface IEggEnemyBehaviors extends Record<string, IBehaviorInstance> {
 interface IEggEnemy extends ISpriteInstance {
 	instVars: IEggEnemyVars;
 	behaviors: IEggEnemyBehaviors;
+}
+
+interface ICityExplosionVars extends VariableType {
+	
+}
+interface ICityExplosionBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface ICityExplosion extends ISpriteInstance {
+	instVars: ICityExplosionVars;
+	behaviors: ICityExplosionBehaviors;
 }
 
 interface IChargeWarningVars extends VariableType {
@@ -445,6 +470,17 @@ interface IBackgroundBehaviors extends Record<string, IBehaviorInstance> {
 interface IBackground extends ISpriteInstance {
 	instVars: IBackgroundVars;
 	behaviors: IBackgroundBehaviors;
+}
+
+interface IAudioVars extends VariableType {
+	
+}
+interface IAudioBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IAudio extends IAudioObjectType {
+	instVars: IAudioVars;
+	behaviors: IAudioBehaviors;
 }
 
 

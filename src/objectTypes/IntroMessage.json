@@ -1,10 +1,16 @@
 {
-	"name": "Score2",
+	"name": "IntroMessage",
 	"plugin-id": "Spritefont2",
-	"sid": 647123256124926,
+	"sid": 190381464240158,
 	"isGlobal": false,
 	"instanceVariables": [],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 874343160974738
+		}
+	],
 	"effectTypes": [],
 	"image": {
 		"width": 128,
@@ -14,7 +20,7 @@
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
-		"imageSpriteId": 9977602,
+		"imageSpriteId": 7221598,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

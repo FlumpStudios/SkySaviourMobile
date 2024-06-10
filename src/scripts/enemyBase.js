@@ -1,13 +1,35 @@
 import * as config from "./config.js";
 import { waitForMillisecond } from "./utils.js";
 import { getEnemyHasReachedCity, setEnemyHasReachedCity } from "./global.js";
+import * as events from "./events.js";
 
 export default class EnemyBase extends globalThis.ISpriteInstance {
+	worth = 0;
 	health = 0;
 	isSeaking = false;
 
+	handleRestartAfterKill = () => {
+		this.destroy();
+	}
+
+	handleLevelEnd = () => {
+		console.log("KILL ALL ENEMIES!");
+		this.health = -1;
+	}
+
 	constructor() {
 		super();
+		window.addEventListener(
+			events.restartAfterKill,
+			this.handleRestartAfterKill,
+			false,
+		);
+
+		window.addEventListener(
+			events.levelEnd,
+			this.handleLevelEnd,
+			false,
+		);
 	}
 
 	checkBulletCollision(runtime) {
@@ -27,6 +49,10 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 			}
 		}
 	}
+
+	checkPlayerColision = () => {
+
+	 }
 
 	update(runtime) {
 		// May as well destory all enemies if the end up past the bottom of the screen.

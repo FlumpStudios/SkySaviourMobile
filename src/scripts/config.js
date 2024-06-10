@@ -1,9 +1,14 @@
+export const gameLayoutName = "Game";
+
 export const layers = {
-    game: 0,
-    ui: 1,
-    pause: 2
+    background: 0,
+    game: 1,
+    ui: 2,
+    pause: 3
 }
 
+export const playerStartPosition = { x: 340, y: 1004 };
+export const startingLives = 3;
 export const shotInteval = 0.75;
 export const shotOffsets = { x: 3, y: -45 }
 export const shapeEffectShrinkSpeed = 1750;

@@ -8,6 +8,13 @@
 	"usedAddons": [
 		{
 			"type": "plugin",
+			"id": "Audio",
+			"name": "Audio",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Mouse",
 			"name": "Mouse",
 			"author": "Scirra",
@@ -106,6 +113,13 @@
 		},
 		{
 			"type": "effect",
+			"id": "bulge",
+			"name": "Bulge",
+			"author": "Brad Larson",
+			"bundled": false
+		},
+		{
+			"type": "effect",
 			"id": "glowhorizontal",
 			"name": "Glow horizontal",
 			"author": "Scirra",
@@ -136,15 +150,19 @@
 			"ExplosionParticle",
 			"ElectricEffect",
 			"ChargeSparks",
+			"ScoreLabel",
 			"Score",
-			"Score2",
-			"Score3",
+			"HighLabel",
 			"Score4",
 			"UiShell",
 			"Bullet_UI",
 			"ChargeWarning",
 			"EggSpawner",
-			"Explosion"
+			"CityExplosion",
+			"Life_UI",
+			"Audio",
+			"StartGame",
+			"IntroMessage"
 		],
 		"subfolders": []
 	},
@@ -156,15 +174,17 @@
 	},
 	"layouts": {
 		"items": [
-			"Layout 1",
-			"Layout 2"
+			"Game",
+			"MainMenu",
+			"Sandbox"
 		],
 		"subfolders": []
 	},
 	"eventSheets": {
 		"items": [
 			"Event sheet 1",
-			"Event sheet 2"
+			"Event sheet 2",
+			"Event sheet 3"
 		],
 		"subfolders": []
 	},
@@ -263,6 +283,22 @@
 					"name": "global.js",
 					"type": "application/javascript",
 					"sid": 247791154823944,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "events.js",
+					"type": "application/javascript",
+					"sid": 832427126835848,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "gameScript.js",
+					"type": "application/javascript",
+					"sid": 877698969797630,
 					"script-info": {
 						"purpose": "none"
 					}

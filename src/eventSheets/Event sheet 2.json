@@ -1,5 +1,32 @@
 {
 	"name": "Event sheet 2",
-	"events": [],
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-object-clicked",
+					"objectClass": "Mouse",
+					"sid": 105107934382037,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked",
+						"object-clicked": "StartGame"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 110786798095526,
+					"parameters": {
+						"layout": "Game"
+					}
+				}
+			],
+			"sid": 962829228804415
+		}
+	],
 	"sid": 362031936155411
 }

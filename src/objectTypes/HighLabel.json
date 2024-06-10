@@ -1,7 +1,7 @@
 {
-	"name": "Score",
+	"name": "HighLabel",
 	"plugin-id": "Spritefont2",
-	"sid": 647123256124926,
+	"sid": 859026067680884,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
@@ -14,7 +14,7 @@
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
-		"imageSpriteId": 9977602,
+		"imageSpriteId": 931079,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

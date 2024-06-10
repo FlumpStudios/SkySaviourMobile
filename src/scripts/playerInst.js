@@ -1,7 +1,7 @@
 import * as config from "./config.js";
-import { getEnemyHasReachedCity } from "./global.js";
+import { getEnemyHasReachedCity, getLives, removeLife, setEnemyHasReachedCity } from "./global.js";
 import { waitForMillisecond } from "./utils.js";
-
+import * as events from "./events.js";
 
 export default class PlayerInst extends globalThis.ISpriteInstance {
     #bulletCount = config.maxBulletCount;
@@ -15,10 +15,13 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
 
     constructor() {
         super();
+        this.x = config.playerStartPosition.x;
+        this.y = config.playerStartPosition.y;
         this.#lastMousex = this.x;
         this.#lastMousey = this.y;
+        this.resetVars();
     }
-
+    
     controls = (runtime) => {
         if (this.x > this.#lastx) {
             this.setAnimation("Right");
@@ -57,13 +60,27 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         }
     }
 
+    resetVars = () => {
+        this.#bulletCount = config.maxBulletCount;
+        this.#lastMousex = 0;
+        this.#lastMousey = 0;
+        this.#shotCounter = 0;
+        this.#isCharging = false;
+        this.#lastx = 0;
+        this.#chargeTicker = 0;
+        this.#isInDestroyingCityState = false;
+        this.x = config.playerStartPosition.x;
+        this.y = config.playerStartPosition.y;
+        setEnemyHasReachedCity(false);        
+    }
+
     spawnBullet(runtime) {
         if (this.getBulletCount() >= 0 && !getEnemyHasReachedCity()) {
             this.#shotCounter += runtime.dt;
             if (this.#shotCounter > config.shotInteval) {
                 runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x, this.y + config.shotOffsets.y);
                 this.#shotCounter = 0;
-                this.removeBullet();
+                this.removeBullet();   
             }
         }
     }
@@ -94,8 +111,22 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         waitForMillisecond(delay).then(() => runtime.objects.CityExplosion.createInstance(config.layers.game, x, y));
     }
 
+    #handleLivesUi = (runtime) => {
+        const liveSprites = runtime.objects.Life_UI.getAllInstances();
+
+        for (let i = 0; i < liveSprites.length; i++) {
+            if (i >= getLives()) {
+                liveSprites[i].isVisible = false;
+            }
+            else {
+                liveSprites[i].isVisible = true;
+            }
+        }
+    }
+
     update = (runtime) => {
         this.handleWarning(runtime);
+        this.#handleLivesUi(runtime);
         const elec = runtime.objects.ElectricEffect.getFirstInstance();
         const chargeSparks = runtime.objects.ChargeSparks.getFirstInstance();
         runtime.objects.ChargeSparks.getFirstInstance();
@@ -155,10 +186,11 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         elec.y = this.y;
         if (getEnemyHasReachedCity()) {
             this.behaviors["8Direction"].isEnabled = false;
+
             if (!this.#isInDestroyingCityState) {
                 this.#isInDestroyingCityState = true;
                 this.#spawnCityExplosion(runtime, 0, 160, 998);
-                this.#spawnCityExplosion(runtime, 50,438, 1014);
+                this.#spawnCityExplosion(runtime, 50, 438, 1014);
                 this.#spawnCityExplosion(runtime, 100, 574, 990);
                 this.#spawnCityExplosion(runtime, 150, 74, 1134);
                 this.#spawnCityExplosion(runtime, 200, 328, 1128);
@@ -167,9 +199,8 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
                 this.#spawnCityExplosion(runtime, 350, 204, 1208);
                 this.#spawnCityExplosion(runtime, 400, 410, 1220);
                 this.#spawnCityExplosion(runtime, 450, 602, 1218);
-
                 this.#spawnCityExplosion(runtime, 500, 160, 998);
-                this.#spawnCityExplosion(runtime, 550,438, 1014);
+                this.#spawnCityExplosion(runtime, 550, 438, 1014);
                 this.#spawnCityExplosion(runtime, 600, 574, 990);
                 this.#spawnCityExplosion(runtime, 650, 74, 1134);
                 this.#spawnCityExplosion(runtime, 700, 328, 1128);
@@ -178,6 +209,13 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
                 this.#spawnCityExplosion(runtime, 850, 204, 1208);
                 this.#spawnCityExplosion(runtime, 900, 410, 1220);
                 this.#spawnCityExplosion(runtime, 950, 602, 1218);
+                waitForMillisecond(950).then(() => {
+                    removeLife();
+                    window.dispatchEvent(new CustomEvent(events.restartAfterKill));
+                    this.resetVars();
+                });
+
+
             }
         }
         else {
