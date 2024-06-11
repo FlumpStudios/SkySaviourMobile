@@ -1,5 +1,5 @@
 // NOTE: This definition file is auto generated - any changes you make will not be saved
-// 6/10/2024 9:32:32 PM
+// 6/11/2024 9:20:22 PM
 
 declare function runOnStartup(cb: (runtime: IRuntime) => void): void;
 
@@ -48,14 +48,15 @@ interface IRuntimeObjects {
 	['StartGame']: IObjectClass<IStartGame>;
 	['SquareShotEffect']: IObjectClass<ISquareShotEffect>;
 	['ScreenBlocker']: IObjectClass<IScreenBlocker>;
+	['ScoreLabel']: IObjectClass<IScoreLabel>;
 	['Score4']: IObjectClass<IScore4>;
-	['Score3']: IObjectClass<IScore3>;
-	['Score2']: IObjectClass<IScore2>;
 	['Score']: IObjectClass<IScore>;
 	['Player']: IObjectClass<IPlayer>;
 	['Mouse']: IObjectClass<IMouse>;
 	['Life_UI']: IObjectClass<ILife_UI>;
+	['IntroMessage']: IObjectClass<IIntroMessage>;
 	['Horizon']: IObjectClass<IHorizon>;
+	['HighLabel']: IObjectClass<IHighLabel>;
 	['ExplosionParticle']: IObjectClass<IExplosionParticle>;
 	['ElectricEffect']: IObjectClass<IElectricEffect>;
 	['EggSpawner']: IObjectClass<IEggSpawner>;
@@ -260,6 +261,17 @@ interface IScreenBlocker extends ISpriteInstance {
 	behaviors: IScreenBlockerBehaviors;
 }
 
+interface IScoreLabelVars extends VariableType {
+	
+}
+interface IScoreLabelBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IScoreLabel extends IWorldInstance {
+	instVars: IScoreLabelVars;
+	behaviors: IScoreLabelBehaviors;
+}
+
 interface IScore4Vars extends VariableType {
 	
 }
@@ -269,28 +281,6 @@ interface IScore4Behaviors extends Record<string, IBehaviorInstance> {
 interface IScore4 extends IWorldInstance {
 	instVars: IScore4Vars;
 	behaviors: IScore4Behaviors;
-}
-
-interface IScore3Vars extends VariableType {
-	
-}
-interface IScore3Behaviors extends Record<string, IBehaviorInstance> {
-	
-}
-interface IScore3 extends IWorldInstance {
-	instVars: IScore3Vars;
-	behaviors: IScore3Behaviors;
-}
-
-interface IScore2Vars extends VariableType {
-	
-}
-interface IScore2Behaviors extends Record<string, IBehaviorInstance> {
-	
-}
-interface IScore2 extends IWorldInstance {
-	instVars: IScore2Vars;
-	behaviors: IScore2Behaviors;
 }
 
 interface IScoreVars extends VariableType {
@@ -338,6 +328,17 @@ interface ILife_UI extends ISpriteInstance {
 	behaviors: ILife_UIBehaviors;
 }
 
+interface IIntroMessageVars extends VariableType {
+	
+}
+interface IIntroMessageBehaviors extends Record<string, IBehaviorInstance> {
+	['Fade']: IBehaviorInstance
+}
+interface IIntroMessage extends IWorldInstance {
+	instVars: IIntroMessageVars;
+	behaviors: IIntroMessageBehaviors;
+}
+
 interface IHorizonVars extends VariableType {
 	
 }
@@ -347,6 +348,17 @@ interface IHorizonBehaviors extends Record<string, IBehaviorInstance> {
 interface IHorizon extends ISpriteInstance {
 	instVars: IHorizonVars;
 	behaviors: IHorizonBehaviors;
+}
+
+interface IHighLabelVars extends VariableType {
+	
+}
+interface IHighLabelBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IHighLabel extends IWorldInstance {
+	instVars: IHighLabelVars;
+	behaviors: IHighLabelBehaviors;
 }
 
 interface IExplosionParticleVars extends VariableType {

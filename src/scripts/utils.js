@@ -86,4 +86,5 @@ export const isMirrored = (inst) => inst.width < 0;
 export const getAngleTo = (obj1, obj2) =>
 	Math.atan2(obj1.y - obj2.y, obj1.x - obj2.x);
 
-
+export const clamp = (value, min, max) => 
+	Math.min(Math.max(value, min), max);

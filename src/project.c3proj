@@ -151,7 +151,7 @@
 			"ElectricEffect",
 			"ChargeSparks",
 			"ScoreLabel",
-			"Score",
+			"multiplierText",
 			"HighLabel",
 			"Score4",
 			"UiShell",
@@ -162,7 +162,10 @@
 			"Life_UI",
 			"Audio",
 			"StartGame",
-			"IntroMessage"
+			"IntroMessage",
+			"ScoreText_ui",
+			"PlayerDeathEffect",
+			"DeathParticles"
 		],
 		"subfolders": []
 	},
@@ -302,6 +305,14 @@
 					"script-info": {
 						"purpose": "none"
 					}
+				},
+				{
+					"name": "playerExplosionEffectInst.js",
+					"type": "application/javascript",
+					"sid": 686051182284515,
+					"script-info": {
+						"purpose": "none"
+					}
 				}
 			],
 			"subfolders": []
@@ -311,7 +322,16 @@
 			"subfolders": []
 		},
 		"music": {
-			"items": [],
+			"items": [
+				{
+					"name": "techno.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 820814739186586,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		},
 		"video": {

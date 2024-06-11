@@ -30,7 +30,6 @@ export const runGamescript = (runtime) => {
         introMessage.isVisible = false;
     }
 
-
     if (currentWave === 1) {
         if (t === 0) {
             runtime.objects.EggSpawner.createInstance(config.layers.game, 352, -32);
@@ -42,6 +41,3 @@ export const runGamescript = (runtime) => {
         }
     }
 }
-
-
-

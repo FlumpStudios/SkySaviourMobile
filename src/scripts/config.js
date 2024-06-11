@@ -7,9 +7,11 @@ export const layers = {
     pause: 3
 }
 
+export const maxMultiplier = 5;
+export const multiplierDivisor = 8;
 export const playerStartPosition = { x: 340, y: 1004 };
 export const startingLives = 3;
-export const shotInteval = 0.75;
+export const shotInteval =  0.84// 0.42;
 export const shotOffsets = { x: 3, y: -45 }
 export const shapeEffectShrinkSpeed = 1750;
 export const maxBulletCount = 10;

@@ -45,6 +45,26 @@
 						"height-type": "no",
 						"z": false
 					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 960629487999542,
+					"parameters": {
+						"audio-file": "techno",
+						"loop": "looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 203121226785549,
+					"parameters": {
+						"seconds": "0.1"
+					}
 				}
 			],
 			"sid": 226378317987978

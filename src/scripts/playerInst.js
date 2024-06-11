@@ -1,6 +1,6 @@
 import * as config from "./config.js";
-import { getEnemyHasReachedCity, getLives, removeLife, setEnemyHasReachedCity } from "./global.js";
-import { waitForMillisecond } from "./utils.js";
+import { setMultiplier, getEnemyHasReachedCity, getLives, removeLife, setEnemyHasReachedCity } from "./global.js";
+import { clamp, waitForMillisecond } from "./utils.js";
 import * as events from "./events.js";
 
 export default class PlayerInst extends globalThis.ISpriteInstance {
@@ -12,6 +12,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
     #lastx = 0;
     #chargeTicker = 0;
     #isInDestroyingCityState = false;
+    #isInDeathState = false;
 
     constructor() {
         super();
@@ -21,7 +22,8 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         this.#lastMousey = this.y;
         this.resetVars();
     }
-    
+
+
     controls = (runtime) => {
         if (this.x > this.#lastx) {
             this.setAnimation("Right");
@@ -71,7 +73,8 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         this.#isInDestroyingCityState = false;
         this.x = config.playerStartPosition.x;
         this.y = config.playerStartPosition.y;
-        setEnemyHasReachedCity(false);        
+        setEnemyHasReachedCity(false);
+        this.#isInDeathState = false;
     }
 
     spawnBullet(runtime) {
@@ -80,7 +83,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
             if (this.#shotCounter > config.shotInteval) {
                 runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x, this.y + config.shotOffsets.y);
                 this.#shotCounter = 0;
-                this.removeBullet();   
+                this.removeBullet();
             }
         }
     }
@@ -124,7 +127,40 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         }
     }
 
+    updateMultiplier = (runtime) => {
+        let m = 0;
+        let multiplierText = runtime.objects.multiplierText.getFirstInstance();
+        const horizony = runtime.objects.Horizon.getFirstInstance().y;
+
+        if (this.#isCharging) {
+            m = 0;
+        }
+        else {
+            m = Math.ceil(((this.y / horizony * config.multiplierDivisor) - config.multiplierDivisor) * -1);
+        }
+        var r = clamp(m, 1, config.maxMultiplier);
+        setMultiplier(r);
+        multiplierText.text = "X" + r.toString();
+    }
+
+    kill = (runtime) => {
+        if (!this.#isInDeathState) {
+            runtime.objects.DeathParticles.createInstance(config.layers.game, this.x, this.y);
+            runtime.objects.PlayerDeathEffect.createInstance(config.layers.game, this.x, this.y);
+            this.#isInDeathState = true;
+            waitForMillisecond(850).then(() => {                
+                this.resetVars();                
+                removeLife();                    
+            });
+        }
+    }
+
     update = (runtime) => {
+        if (this.#isInDeathState) {
+            this.x = -1000;
+            return;
+        }
+        this.updateMultiplier(runtime);
         this.handleWarning(runtime);
         this.#handleLivesUi(runtime);
         const elec = runtime.objects.ElectricEffect.getFirstInstance();
@@ -179,7 +215,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
                 chargeSparks.isVisible = false;
                 chargeSparks.x = -1000;
                 chargeSparks.y = -1000;
-                this.#chargeTicker = 0;
+                // this.#chargeTicker = 0;
             }
         }
 
