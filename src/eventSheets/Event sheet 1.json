@@ -47,27 +47,52 @@
 					}
 				},
 				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 289499556706636,
+					"parameters": {
+						"seconds": "0"
+					}
+				},
+				{
 					"id": "play",
 					"objectClass": "Audio",
-					"sid": 960629487999542,
+					"sid": 152832816302397,
 					"parameters": {
-						"audio-file": "techno",
+						"audio-file": "cheered_on",
 						"loop": "looping",
 						"volume": "0",
 						"stereo-pan": "0",
 						"tag-optional": "\"\""
 					}
-				},
-				{
-					"id": "wait",
-					"objectClass": "System",
-					"sid": 203121226785549,
-					"parameters": {
-						"seconds": "0.1"
-					}
 				}
 			],
 			"sid": 226378317987978
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "Bullet",
+					"sid": 639339420802216
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 290022864388877,
+					"parameters": {
+						"audio-file": "alienshoot1",
+						"loop": "not-looping",
+						"volume": "-2.5",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				}
+			],
+			"sid": 636938707721805
 		}
 	],
 	"sid": 640881692263834

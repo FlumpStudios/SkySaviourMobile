@@ -35,7 +35,7 @@ export const runGamescript = (runtime) => {
             runtime.objects.EggSpawner.createInstance(config.layers.game, 352, -32);
             increaseLevelTime(1);
         }
-        if (t === 10) {
+        if (t === 15) {
             runtime.objects.EggSpawner.getFirstInstance().destroy();
             runEndofLevel();
         }

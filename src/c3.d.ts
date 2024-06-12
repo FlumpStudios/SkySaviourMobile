@@ -1,5 +1,5 @@
 // NOTE: This definition file is auto generated - any changes you make will not be saved
-// 6/11/2024 9:20:22 PM
+// 6/12/2024 9:41:04 PM
 
 declare function runOnStartup(cb: (runtime: IRuntime) => void): void;
 
@@ -48,10 +48,12 @@ interface IRuntimeObjects {
 	['StartGame']: IObjectClass<IStartGame>;
 	['SquareShotEffect']: IObjectClass<ISquareShotEffect>;
 	['ScreenBlocker']: IObjectClass<IScreenBlocker>;
+	['ScoreText_ui']: IObjectClass<IScoreText_ui>;
 	['ScoreLabel']: IObjectClass<IScoreLabel>;
 	['Score4']: IObjectClass<IScore4>;
-	['Score']: IObjectClass<IScore>;
+	['PlayerDeathEffect']: IObjectClass<IPlayerDeathEffect>;
 	['Player']: IObjectClass<IPlayer>;
+	['multiplierText']: IObjectClass<ImultiplierText>;
 	['Mouse']: IObjectClass<IMouse>;
 	['Life_UI']: IObjectClass<ILife_UI>;
 	['IntroMessage']: IObjectClass<IIntroMessage>;
@@ -61,6 +63,7 @@ interface IRuntimeObjects {
 	['ElectricEffect']: IObjectClass<IElectricEffect>;
 	['EggSpawner']: IObjectClass<IEggSpawner>;
 	['EggEnemy']: IObjectClass<IEggEnemy>;
+	['DeathParticles']: IObjectClass<IDeathParticles>;
 	['CityExplosion']: IObjectClass<ICityExplosion>;
 	['ChargeWarning']: IObjectClass<IChargeWarning>;
 	['ChargeSparks']: IObjectClass<IChargeSparks>;
@@ -261,6 +264,17 @@ interface IScreenBlocker extends ISpriteInstance {
 	behaviors: IScreenBlockerBehaviors;
 }
 
+interface IScoreText_uiVars extends VariableType {
+	
+}
+interface IScoreText_uiBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IScoreText_ui extends IWorldInstance {
+	instVars: IScoreText_uiVars;
+	behaviors: IScoreText_uiBehaviors;
+}
+
 interface IScoreLabelVars extends VariableType {
 	
 }
@@ -283,15 +297,16 @@ interface IScore4 extends IWorldInstance {
 	behaviors: IScore4Behaviors;
 }
 
-interface IScoreVars extends VariableType {
+interface IPlayerDeathEffectVars extends VariableType {
 	
 }
-interface IScoreBehaviors extends Record<string, IBehaviorInstance> {
-	
+interface IPlayerDeathEffectBehaviors extends Record<string, IBehaviorInstance> {
+	['Rotate']: IBehaviorInstance
+	['DestroyOutsideLayout']: IBehaviorInstance
 }
-interface IScore extends IWorldInstance {
-	instVars: IScoreVars;
-	behaviors: IScoreBehaviors;
+interface IPlayerDeathEffect extends ISpriteInstance {
+	instVars: IPlayerDeathEffectVars;
+	behaviors: IPlayerDeathEffectBehaviors;
 }
 
 interface IPlayerVars extends VariableType {
@@ -304,6 +319,17 @@ interface IPlayerBehaviors extends Record<string, IBehaviorInstance> {
 interface IPlayer extends ISpriteInstance {
 	instVars: IPlayerVars;
 	behaviors: IPlayerBehaviors;
+}
+
+interface ImultiplierTextVars extends VariableType {
+	
+}
+interface ImultiplierTextBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface ImultiplierText extends IWorldInstance {
+	instVars: ImultiplierTextVars;
+	behaviors: ImultiplierTextBehaviors;
 }
 
 interface IMouseVars extends VariableType {
@@ -405,6 +431,17 @@ interface IEggEnemyBehaviors extends Record<string, IBehaviorInstance> {
 interface IEggEnemy extends ISpriteInstance {
 	instVars: IEggEnemyVars;
 	behaviors: IEggEnemyBehaviors;
+}
+
+interface IDeathParticlesVars extends VariableType {
+	
+}
+interface IDeathParticlesBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IDeathParticles extends IWorldInstance {
+	instVars: IDeathParticlesVars;
+	behaviors: IDeathParticlesBehaviors;
 }
 
 interface ICityExplosionVars extends VariableType {

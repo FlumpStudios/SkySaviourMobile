@@ -318,7 +318,16 @@
 			"subfolders": []
 		},
 		"sound": {
-			"items": [],
+			"items": [
+				{
+					"name": "alienshoot1.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 347364904403282,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		},
 		"music": {
@@ -327,6 +336,86 @@
 					"name": "techno.webm",
 					"type": "audio/webm; codecs=opus",
 					"sid": 820814739186586,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Fast Background.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 918072421826296,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Four Loop.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 505210148703327,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Tempo.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 555982213965279,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Dumus.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 562220435948096,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "hurry.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 629758977372117,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "cheered_on.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 583294419309266,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "end_credits.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 775676590755873,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "the_destruction_of_the_world.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 620705193764357,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "omega_droid_battle_ii.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 492963336261857,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "level_failed.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 255818436697867,
 					"file-info": {
 						"purpose": "none"
 					}
