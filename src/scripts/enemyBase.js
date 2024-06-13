@@ -18,6 +18,7 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 
 	constructor() {
 		super();
+		
 		window.addEventListener(
 			events.restartAfterKill,
 			this.handleRestartAfterKill,
@@ -49,10 +50,6 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 		}
 	}
 
-	checkPlayerColision = () => {
-
-	}
-
 	update(runtime) {
 		// May as well destory all enemies if the end up past the bottom of the screen.		
 		if (this.health < 0) {
@@ -79,11 +76,14 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 			this.destroy();
 		}
 
+		const player = runtime.objects.Player.getFirstInstance();
+
 		if (runtime.objects.Horizon.getFirstInstance().testOverlap(this)) {
-			setEnemyHasReachedCity(true);
+			if (!player.getIsInDeathState()) {
+				setEnemyHasReachedCity(true);
+			}
 		}
 
-		const player = runtime.objects.Player.getFirstInstance();
 		if (runtime.objects.Player.getFirstInstance().testOverlap(this)) {
 			player.kill(runtime);
 		}

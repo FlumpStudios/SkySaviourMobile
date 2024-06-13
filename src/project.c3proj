@@ -165,7 +165,8 @@
 			"IntroMessage",
 			"ScoreText_ui",
 			"PlayerDeathEffect",
-			"DeathParticles"
+			"DeathParticles",
+			"GameOver"
 		],
 		"subfolders": []
 	},

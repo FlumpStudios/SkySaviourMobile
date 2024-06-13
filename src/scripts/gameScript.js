@@ -3,7 +3,6 @@ import { getLevelTime, getCurrentWave, increaseLevelTime, increaseCurrentWave, r
 import * as config from "./config.js";
 import * as events from "./events.js";
 
-
 const runEndofLevel = () => {
     window.dispatchEvent(new CustomEvent(events.levelEnd));
     increaseCurrentWave();
@@ -15,9 +14,9 @@ export const runGamescript = (runtime) => {
     const t = Math.round(getLevelTime());
     const currentWave = getCurrentWave();
     const introMessage = runtime.objects.IntroMessage.getFirstInstance();
+    console.log(t);
 
     if (t === -5) {
-        // introMessage.behaviors.Fade.startFade();
         introMessage.isVisible = true;
         introMessage.text = "Wave " + getCurrentWave().toString();
     }

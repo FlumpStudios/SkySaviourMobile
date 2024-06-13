@@ -7,6 +7,10 @@ let currentWave = 1;
 let score = 0;
 let chain = 0;
 let multiplier = 0;
+let isGameOver = false;
+
+export const getIsGameOver = () => isGameOver;
+export const setIsGameOver = (gameOver) => { isGameOver = gameOver }
 
 export const getMultiplier = () => multiplier;
 export const setMultiplier = (m) => { multiplier = m };
@@ -34,8 +38,9 @@ export const addToChain = (c) => chain += c;
 export const resetAllGlobals = () => {
     enemyHasReachedCity = false;
     playerLives = config.startingLives;
-    levelTime = 0;
-    currentWave = 0;
+    levelTime = -5;
+    currentWave = 1;
     score = 0;
     chain = 0;
+    isGameOver = false;
 }

@@ -17,3 +17,5 @@ export const shapeEffectShrinkSpeed = 1750;
 export const maxBulletCount = 10;
 export const chargeInteval = 0.25;
 export const eggSpawnInterval = 1;
+export const playerSpawnInSize = 1000;
+export const gameOverStopPosition = 540;
