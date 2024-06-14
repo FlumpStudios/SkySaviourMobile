@@ -2,6 +2,7 @@ import * as config from "./config.js";
 import { waitForMillisecond } from "./utils.js";
 import { addToScore, getEnemyHasReachedCity, setEnemyHasReachedCity } from "./global.js";
 import * as events from "./events.js";
+import * as SfxMangager from "./sfxManager.js";
 
 export default class EnemyBase extends globalThis.ISpriteInstance {
 	worth = 10;
@@ -53,9 +54,9 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 	update(runtime) {
 		// May as well destory all enemies if the end up past the bottom of the screen.		
 		if (this.health < 0) {
-			console.log("SCORE");
 			addToScore(this.worth);
 			this.destroy();
+			SfxMangager.PlayEnemyExplosion();
 		}
 
 		if (getEnemyHasReachedCity()) {

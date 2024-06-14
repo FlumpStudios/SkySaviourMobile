@@ -8,6 +8,7 @@ import { runGamescript } from "./gameScript.js";
 import { resetAllGlobals } from "./global.js";
 import * as config from "./config.js";
 import { getScore, getIsGameOver } from "./global.js";
+import * as sfxManager from "./sfxManager.js";
 
 runOnStartup(async runtime => {
 	runtime.addEventListener("beforeprojectstart", () => OnBeforeProjectStart(runtime));
@@ -21,12 +22,12 @@ runOnStartup(async runtime => {
 
 async function OnBeforeProjectStart(runtime) {
 	runtime.addEventListener("tick", () => Tick(runtime));
+	await sfxManager.init(runtime);
 }
 
 function Tick(runtime) {
 	const currentLayout = runtime.layout.name;
 	if (currentLayout === config.gameLayoutName) {
-		console.log("TICK");
 		runGamescript(runtime);
 		for (const player of runtime.objects.Player.instances()) {
 			player.update(runtime);

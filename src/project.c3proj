@@ -314,6 +314,22 @@
 					"script-info": {
 						"purpose": "none"
 					}
+				},
+				{
+					"name": "sfxManager.js",
+					"type": "application/javascript",
+					"sid": 320738361372149,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "audioManager.js",
+					"type": "application/javascript",
+					"sid": 785450577588175,
+					"script-info": {
+						"purpose": "none"
+					}
 				}
 			],
 			"subfolders": []
@@ -321,9 +337,185 @@
 		"sound": {
 			"items": [
 				{
-					"name": "alienshoot1.webm",
+					"name": "PlayerFire.webm",
 					"type": "audio/webm; codecs=opus",
 					"sid": 347364904403282,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Explosion__001.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 771543681408708,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Explosion__002.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 364239883070369,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Explosion__003.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 187282785271032,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Explosion__004.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 878303082735876,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Explosion__005.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 936941843732273,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Explosion__006.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 759090696147553,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Explosion__007.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 906933778621090,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Explosion__008.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 348366328277860,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Explosion__009.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 626344490327739,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Explosion__010.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 840745073282648,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Menu__001.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 740182714668399,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Menu__002.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 745531632991664,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Menu__003.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 743530484642092,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Menu__004.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 935824544074250,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Menu__005.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 628755259024277,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Menu__006.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 895656137368124,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Menu__007.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 648491495438872,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Menu__008.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 956862216747585,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Menu__009.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 723489335523180,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Menu__010.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 577054610112516,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "charge.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 413640278030623,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Starpower__007.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 808849991568405,
 					"file-info": {
 						"purpose": "none"
 					}

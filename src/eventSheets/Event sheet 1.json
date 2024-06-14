@@ -17,9 +17,51 @@
 					"objectClass": "ElectricEffect",
 					"sid": 282726683437014,
 					"behaviorType": "Fade"
+				},
+				{
+					"id": "stop",
+					"objectClass": "Audio",
+					"sid": 199043054895233,
+					"parameters": {
+						"tag": "\"charge\""
+					}
 				}
 			],
 			"sid": 778124062312872
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 743422968102651
+				},
+				{
+					"id": "is-tag-playing",
+					"objectClass": "Audio",
+					"sid": 161523735700289,
+					"parameters": {
+						"tag": "\"charge\""
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 845754461478117,
+					"parameters": {
+						"audio-file": "charge",
+						"loop": "looping",
+						"volume": "-5",
+						"stereo-pan": "0",
+						"tag-optional": "\"charge\""
+					}
+				}
+			],
+			"sid": 880219663117179
 		},
 		{
 			"eventType": "block",
@@ -68,31 +110,6 @@
 				}
 			],
 			"sid": 226378317987978
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-created",
-					"objectClass": "Bullet",
-					"sid": 639339420802216
-				}
-			],
-			"actions": [
-				{
-					"id": "play",
-					"objectClass": "Audio",
-					"sid": 290022864388877,
-					"parameters": {
-						"audio-file": "alienshoot1",
-						"loop": "not-looping",
-						"volume": "-2.5",
-						"stereo-pan": "0",
-						"tag-optional": "\"\""
-					}
-				}
-			],
-			"sid": 636938707721805
 		}
 	],
 	"sid": 640881692263834

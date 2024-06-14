@@ -1,5 +1,5 @@
 // NOTE: This definition file is auto generated - any changes you make will not be saved
-// 6/13/2024 9:42:54 PM
+// 6/14/2024 12:51:11 AM
 
 declare function runOnStartup(cb: (runtime: IRuntime) => void): void;
 
@@ -59,6 +59,7 @@ interface IRuntimeObjects {
 	['IntroMessage']: IObjectClass<IIntroMessage>;
 	['Horizon']: IObjectClass<IHorizon>;
 	['HighLabel']: IObjectClass<IHighLabel>;
+	['GameOver']: IObjectClass<IGameOver>;
 	['ExplosionParticle']: IObjectClass<IExplosionParticle>;
 	['ElectricEffect']: IObjectClass<IElectricEffect>;
 	['EggSpawner']: IObjectClass<IEggSpawner>;
@@ -315,6 +316,7 @@ interface IPlayerVars extends VariableType {
 interface IPlayerBehaviors extends Record<string, IBehaviorInstance> {
 	['8Direction']: I8DirectionBehaviorInstance
 	['Sine']: IBehaviorInstance
+	['Fade']: IBehaviorInstance
 }
 interface IPlayer extends ISpriteInstance {
 	instVars: IPlayerVars;
@@ -385,6 +387,17 @@ interface IHighLabelBehaviors extends Record<string, IBehaviorInstance> {
 interface IHighLabel extends IWorldInstance {
 	instVars: IHighLabelVars;
 	behaviors: IHighLabelBehaviors;
+}
+
+interface IGameOverVars extends VariableType {
+	
+}
+interface IGameOverBehaviors extends Record<string, IBehaviorInstance> {
+	['Fade']: IBehaviorInstance
+}
+interface IGameOver extends IWorldInstance {
+	instVars: IGameOverVars;
+	behaviors: IGameOverBehaviors;
 }
 
 interface IExplosionParticleVars extends VariableType {

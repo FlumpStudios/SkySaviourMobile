@@ -2,8 +2,10 @@ import * as config from "./config.js";
 import { setMultiplier, getEnemyHasReachedCity, getLives, removeLife, setEnemyHasReachedCity, setIsGameOver, getIsGameOver } from "./global.js";
 import { clamp, waitForMillisecond } from "./utils.js";
 import * as events from "./events.js";
+import * as SfxManager from "./sfxManager.js";
 
 export default class PlayerInst extends globalThis.ISpriteInstance {
+    #hasSpawned = false;
     #bulletCount = config.maxBulletCount;
     #lastMousex = 0;
     #lastMousey = 0;
@@ -91,6 +93,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         if (this.getBulletCount() >= 0 && !getEnemyHasReachedCity()) {
             this.#shotCounter += runtime.dt;
             if (this.#shotCounter > config.shotInteval) {
+                SfxManager.PlayPlayerShoot();
                 runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x, this.y + config.shotOffsets.y);
                 this.#shotCounter = 0;
                 this.removeBullet();
@@ -154,6 +157,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
     }
 
     #resetAfterKill = () => {
+        SfxManager.PlayPlayerSpawnSfx();
         this.width = config.playerSpawnInSize;
         this.height = config.playerSpawnInSize;
         removeLife();
@@ -173,8 +177,13 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
     }
 
     getIsInDeathState = () => this.#isInDeathState;
-    
+
     update = (runtime) => {
+        if (!this.#hasSpawned) {
+            SfxManager.PlayPlayerSpawnSfx();
+            this.#hasSpawned = true;
+        }
+
         if (getLives() < 0) {
             if (!getIsGameOver()) {
                 waitForMillisecond(3000).then(() => runtime.goToLayout("MainMenu"));
@@ -193,12 +202,14 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
 
         if (!this.#isReady) {
             if (this.height > this.#intialHeight) {
-                this.height -= runtime.dt * 5000;
-                this.width -= runtime.dt * 5000;
+                this.height -= runtime.dt * 1500;
+                this.width -= runtime.dt * 1500;
+                this.isCollisionEnabled = false;
             } else {
                 this.height = this.#intialHeight;
                 this.width = this.#intialWidth;
                 this.#isReady = true;
+                this.isCollisionEnabled = true;
             }
         }
 
