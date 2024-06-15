@@ -519,6 +519,86 @@
 					"file-info": {
 						"purpose": "none"
 					}
+				},
+				{
+					"name": "Powerup__002.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 138949583142838,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Powerup__003.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 226208161741222,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Powerup__004.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 840108868967797,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Powerup__005.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 892915008975390,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Powerup__006.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 133213481389212,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Powerup__007.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 182596139506256,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Powerup__008.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 142024743972636,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Powerup__009.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 948340395914833,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Powerup__010.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 356913026211209,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Powerup__001.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 396319992797284,
+					"file-info": {
+						"purpose": "none"
+					}
 				}
 			],
 			"subfolders": []

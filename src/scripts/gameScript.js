@@ -2,9 +2,11 @@
 import { getLevelTime, getCurrentWave, increaseLevelTime, increaseCurrentWave, resetLevelTime } from "./global.js";
 import * as config from "./config.js";
 import * as events from "./events.js";
+import * as sfxManager from "./sfxManager.js";
 
 const runEndofLevel = () => {
     window.dispatchEvent(new CustomEvent(events.levelEnd));
+    sfxManager.PlayLevelEnd();
     increaseCurrentWave();
     resetLevelTime();
 }
@@ -37,6 +39,7 @@ export const runGamescript = (runtime) => {
         if (t === 15) {
             runtime.objects.EggSpawner.getFirstInstance().destroy();
             runEndofLevel();
+            increaseLevelTime(1);
         }
     }
 }

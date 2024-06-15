@@ -166,6 +166,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
 
     kill = (runtime) => {
         if (!this.#isInDeathState) {
+            SfxManager.PlayPlayerKilled();
             runtime.objects.DeathParticles.createInstance(config.layers.game, this.x, this.y);
             runtime.objects.PlayerDeathEffect.createInstance(config.layers.game, this.x, this.y);
             this.#isInDeathState = true;
@@ -202,8 +203,8 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
 
         if (!this.#isReady) {
             if (this.height > this.#intialHeight) {
-                this.height -= runtime.dt * 1500;
                 this.width -= runtime.dt * 1500;
+                this.height  = this.width;
                 this.isCollisionEnabled = false;
             } else {
                 this.height = this.#intialHeight;
@@ -272,7 +273,6 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         elec.y = this.y;
         if (getEnemyHasReachedCity()) {
             this.behaviors["8Direction"].isEnabled = false;
-
             if (!this.#isInDestroyingCityState) {
                 this.#isInDestroyingCityState = true;
                 this.#spawnCityExplosion(runtime, 0, 160, 998);
