@@ -124,7 +124,10 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
     }
 
     #spawnCityExplosion = (runtime, delay, x, y) => {
-        waitForMillisecond(delay).then(() => runtime.objects.CityExplosion.createInstance(config.layers.game, x, y));
+        waitForMillisecond(delay).then(() => {
+            runtime.objects.CityExplosion.createInstance(config.layers.game, x, y)
+            SfxManager.PlayCityExplosion();
+        });
     }
 
     #handleLivesUi = (runtime) => {
@@ -177,6 +180,33 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         }
     }
 
+    #handlePowerUpCollision = (runtime) => {
+        const powerUp = runtime.objects.Powerup.getFirstInstance();
+        if (!powerUp) { return; }
+        
+        if (powerUp.testOverlap(this)) {
+            runtime.objects.PowerUpParticles.createInstance(config.layers.game, powerUp.x, powerUp.y);
+            const powerUpType = powerUp.getCurrentPowerup();
+            switch (powerUpType) {
+                case "Gun":
+                    // TODO: Handle weapon powerup
+                    break;
+                case "Speed":
+                    // TODO: Handle speed powerup                    
+                    break;
+                case "Points":
+                    // TODO: Handle points powerup                    
+                    break;
+                case "Bomb":
+                    // TODO: Handle bomb powerup                    
+                    break;
+            }
+
+            SfxManager.PlayPowerUpSounds();
+            powerUp.destroy();
+        }
+    }
+
     getIsInDeathState = () => this.#isInDeathState;
 
     update = (runtime) => {
@@ -192,6 +222,8 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
             setIsGameOver(true);
         }
 
+        this.#handlePowerUpCollision(runtime);
+
         if (this.#isInDeathState || getIsGameOver()) {
             this.x = -1000;
             return;
@@ -204,7 +236,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         if (!this.#isReady) {
             if (this.height > this.#intialHeight) {
                 this.width -= runtime.dt * 1500;
-                this.height  = this.width;
+                this.height = this.width;
                 this.isCollisionEnabled = false;
             } else {
                 this.height = this.#intialHeight;

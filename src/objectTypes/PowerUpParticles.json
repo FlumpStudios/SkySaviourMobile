@@ -1,7 +1,7 @@
 {
-	"name": "DeathParticles",
+	"name": "PowerUpParticles",
 	"plugin-id": "Particles",
-	"sid": 936910271279228,
+	"sid": 930658222202876,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
@@ -14,7 +14,7 @@
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
-		"imageSpriteId": 3412101,
+		"imageSpriteId": 8059395,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

@@ -11,12 +11,13 @@ const runEndofLevel = () => {
     resetLevelTime();
 }
 
+let powerUpSpawned = false;
+
 export const runGamescript = (runtime) => {
     increaseLevelTime(runtime.dt);
     const t = Math.round(getLevelTime());
     const currentWave = getCurrentWave();
     const introMessage = runtime.objects.IntroMessage.getFirstInstance();
-    console.log(t);
 
     if (t === -5) {
         introMessage.isVisible = true;
@@ -29,6 +30,19 @@ export const runGamescript = (runtime) => {
 
     if (t === -1) {
         introMessage.isVisible = false;
+    }
+
+
+    if (currentWave > 1) {
+        if (t === 0) {
+            if (!powerUpSpawned) {
+                runtime.objects.Powerup.createInstance(config.layers.game, 344, 72);
+                powerUpSpawned = true;
+            }
+        }
+        if (t > 0) {
+            powerUpSpawned = false;
+        }
     }
 
     if (currentWave === 1) {

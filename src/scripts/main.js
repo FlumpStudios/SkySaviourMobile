@@ -1,6 +1,7 @@
 import PlayerInst from "./playerInst.js";
 import BulletInst from "./bulletInst.js";
 import EggEnemyInst from "./eggEnemyInst.js";
+import PowerUpInst from "./powerupinst.js";
 import ShapeExplosionEffectInst from "./shapeExplosionEffectInst.js";
 import PlayerExplosionEffectInst from "./playerExplosionEffectInst.js";
 import EggSpawnerInst from "./eggSpawnerInst.js";
@@ -13,6 +14,7 @@ import * as sfxManager from "./sfxManager.js";
 runOnStartup(async runtime => {
 	runtime.addEventListener("beforeprojectstart", () => OnBeforeProjectStart(runtime));
 	runtime.objects.Player.setInstanceClass(PlayerInst);
+	runtime.objects.Powerup.setInstanceClass(PowerUpInst);	
 	runtime.objects.Bullet.setInstanceClass(BulletInst);
 	runtime.objects.EggEnemy.setInstanceClass(EggEnemyInst);
 	runtime.objects.PlayerDeathEffect.setInstanceClass(PlayerExplosionEffectInst);
@@ -55,6 +57,10 @@ function Tick(runtime) {
 
 		for (const playerExplosionEffectInst of runtime.objects.PlayerDeathEffect.instances()) {
 			playerExplosionEffectInst.update(runtime);
+		}
+
+		for (const powerup of runtime.objects.Powerup.instances()) {
+			powerup.update(runtime);
 		}
 
 

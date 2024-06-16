@@ -166,7 +166,9 @@
 			"ScoreText_ui",
 			"PlayerDeathEffect",
 			"DeathParticles",
-			"GameOver"
+			"GameOver",
+			"Powerup",
+			"PowerUpParticles"
 		],
 		"subfolders": []
 	},
@@ -327,6 +329,14 @@
 					"name": "audioManager.js",
 					"type": "application/javascript",
 					"sid": 785450577588175,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "powerupinst.js",
+					"type": "application/javascript",
+					"sid": 197951569304937,
 					"script-info": {
 						"purpose": "none"
 					}
