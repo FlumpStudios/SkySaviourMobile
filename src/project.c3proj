@@ -168,7 +168,10 @@
 			"DeathParticles",
 			"GameOver",
 			"Powerup",
-			"PowerUpParticles"
+			"PowerUpParticles",
+			"BombLine",
+			"BombBar",
+			"BombText"
 		],
 		"subfolders": []
 	},

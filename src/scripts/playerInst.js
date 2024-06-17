@@ -1,14 +1,16 @@
 import * as config from "./config.js";
-import { setMultiplier, getEnemyHasReachedCity, getLives, removeLife, setEnemyHasReachedCity, setIsGameOver, getIsGameOver } from "./global.js";
+import { setMultiplier, getEnemyHasReachedCity, getLives, removeLife, setEnemyHasReachedCity, setIsGameOver, getIsGameOver, addToScore, removeFromBombCount, getBombCount } from "./global.js";
 import { clamp, waitForMillisecond } from "./utils.js";
 import * as events from "./events.js";
 import * as SfxManager from "./sfxManager.js";
+import { toRadians } from "./utils.js";
 
 export default class PlayerInst extends globalThis.ISpriteInstance {
     #hasSpawned = false;
     #bulletCount = config.maxBulletCount;
     #lastMousex = 0;
     #lastMousey = 0;
+    #lastMouseClick = false;
     #shotCounter = 0;
     #isCharging = false;
     #lastx = 0;
@@ -32,6 +34,8 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
 
         this.width = config.playerSpawnInSize;
         this.height = config.playerSpawnInSize;
+
+        this.behaviors["8Direction"].maxSpeed = config.moveSpeed;
     }
 
 
@@ -51,25 +55,45 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         if (runtime.objects.Mouse.isMouseButtonDown(0)) {
             const x = runtime.objects.Mouse.getMouseX();
             const y = runtime.objects.Mouse.getMouseY();
-            if (x > this.#lastMousex) {
-                this.behaviors["8Direction"].simulateControl("right");
+
+            if (this.#lastMouseClick === false) {
+                if (y > config.bombClickY) {
+                    if (getBombCount() > 0) {
+                        let bombline1 = runtime.objects.BombLine.createInstance(config.layers.game, this.x, this.y);
+                        let bombLine2 = runtime.objects.BombLine.createInstance(config.layers.game, this.x, this.y);
+                        bombLine2.angle = 1.57;
+                        bombline1.angle = 4.71;
+                        SfxManager.PlayBombSounds();
+                        removeFromBombCount();
+                    }
+                }
             }
 
-            if (x < this.#lastMousex) {
-                this.behaviors["8Direction"].simulateControl("left");
-            }
+            else {
+                if (x > this.#lastMousex) {
+                    this.behaviors["8Direction"].simulateControl("right");
+                }
 
-            if (y < this.#lastMousey) {
-                this.behaviors["8Direction"].simulateControl("up");
-            }
+                if (x < this.#lastMousex) {
+                    this.behaviors["8Direction"].simulateControl("left");
+                }
+
+                if (y < this.#lastMousey) {
+                    this.behaviors["8Direction"].simulateControl("up");
+                }
 
 
-            if (y > this.#lastMousey) {
-                this.behaviors["8Direction"].simulateControl("down");
+                if (y > this.#lastMousey) {
+                    this.behaviors["8Direction"].simulateControl("down");
+                }
             }
 
             this.#lastMousex = runtime.objects.Mouse.getMouseX()
             this.#lastMousey = runtime.objects.Mouse.getMouseY()
+            this.#lastMouseClick = true;
+        }
+        else {
+            this.#lastMouseClick = false;
         }
     }
 
@@ -87,6 +111,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         setEnemyHasReachedCity(false);
         this.#isInDeathState = false;
         this.#isReady = false;
+        this.#lastMouseClick = false;
     }
 
     spawnBullet(runtime) {
@@ -183,7 +208,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
     #handlePowerUpCollision = (runtime) => {
         const powerUp = runtime.objects.Powerup.getFirstInstance();
         if (!powerUp) { return; }
-        
+
         if (powerUp.testOverlap(this)) {
             runtime.objects.PowerUpParticles.createInstance(config.layers.game, powerUp.x, powerUp.y);
             const powerUpType = powerUp.getCurrentPowerup();
@@ -192,13 +217,14 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
                     // TODO: Handle weapon powerup
                     break;
                 case "Speed":
-                    // TODO: Handle speed powerup                    
+                    this.behaviors["8Direction"].maxSpeed += config.moveSpeedPowerUpBonus;
                     break;
                 case "Points":
-                    // TODO: Handle points powerup                    
+                    globa
+                    addToScore(config.pointsBonusPickupAmount);
                     break;
                 case "Bomb":
-                    // TODO: Handle bomb powerup                    
+                    addToBombCount(1);
                     break;
             }
 

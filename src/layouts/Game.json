@@ -208,7 +208,7 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 356,
+						"x": 362,
 						"y": 896,
 						"width": 727.1284245927744,
 						"height": 2,
@@ -749,8 +749,8 @@
 						}
 					},
 					"world": {
-						"x": 325.3289524585189,
-						"y": 1306.946116647179,
+						"x": 360,
+						"y": 1228,
 						"width": 800,
 						"height": 54,
 						"originX": 0.5,
@@ -1262,6 +1262,74 @@
 						"y": -46,
 						"width": 726,
 						"height": 46,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "BombBar",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 51,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 336,
+						"y": 1399.4923076923078,
+						"width": 1018.1968911917098,
+						"height": 88,
+						"originX": 0.5,
+						"originY": 2.3181818181818183,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "BombText",
+					"properties": {
+						"text": "BOMB",
+						"enable-bbcode": true,
+						"character-width": 16,
+						"character-height": 16,
+						"character-set": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,;:?!-_~#\"'&()[]|`\\/@°+=*$£€<>",
+						"spacing-data": "",
+						"scale": 2,
+						"character-spacing": 0,
+						"line-height": 0,
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "top-left",
+						"read-aloud": false
+					},
+					"uid": 52,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 0,
+						"y": 1202,
+						"width": 718,
+						"height": 84,
 						"originX": 0,
 						"originY": 0,
 						"color": [

@@ -12,7 +12,7 @@ import { getScore, getIsGameOver } from "./global.js";
 import * as sfxManager from "./sfxManager.js";
 
 runOnStartup(async runtime => {
-	runtime.addEventListener("beforeprojectstart", () => OnBeforeProjectStart(runtime));
+	runtime.addEventListener("beforeprojectstart", () => OnBeforeProjectStart(runtime));	
 	runtime.objects.Player.setInstanceClass(PlayerInst);
 	runtime.objects.Powerup.setInstanceClass(PowerUpInst);	
 	runtime.objects.Bullet.setInstanceClass(BulletInst);

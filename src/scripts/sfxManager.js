@@ -61,6 +61,10 @@ export function PlayPowerUpSounds() {
     audioManager.playSound(powerup);
 }
 
+export function PlayBombSounds() {
+    audioManager.playSound(explosions[6]);
+}
+
 export function SetVolume(vol) {
     if (audioManager) {
         audioManager.changeVolume(vol)

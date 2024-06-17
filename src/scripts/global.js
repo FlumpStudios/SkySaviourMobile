@@ -8,6 +8,7 @@ let score = 0;
 let chain = 0;
 let multiplier = 0;
 let isGameOver = false;
+let bombCount = 1;
 
 export const getIsGameOver = () => isGameOver;
 export const setIsGameOver = (gameOver) => { isGameOver = gameOver }
@@ -35,6 +36,10 @@ export const addToScore = (s) => { score += (s * multiplier) };
 export const getChain = () => chain;
 export const addToChain = (c) => chain += c;
 
+export const getBombCount = () => bombCount;
+export const addToBombCount = (b) => bombCount += b;
+export const removeFromBombCount = () => bombCount --;
+
 export const resetAllGlobals = () => {
     enemyHasReachedCity = false;
     playerLives = config.startingLives;
@@ -43,4 +48,5 @@ export const resetAllGlobals = () => {
     score = 0;
     chain = 0;
     isGameOver = false;
+    bombCount = 1;
 }

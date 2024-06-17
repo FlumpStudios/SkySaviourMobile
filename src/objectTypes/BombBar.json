@@ -1,0 +1,50 @@
+{
+	"name": "BombBar",
+	"plugin-id": "Sprite",
+	"sid": 914696867337646,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 552,
+						"height": 66,
+						"originX": 0.5,
+						"originY": 2.3181818181818183,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 7906412,
+						"collisionPoly": {
+							"points": [
+								0.004392881279567469,
+								0.015151515151515152,
+								0.9956071187204324,
+								0.015151515151515152,
+								0.9956071187204324,
+								0.9848484848484849,
+								0.004392881279567469,
+								0.9848484848484849
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 601903578696304,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

@@ -19,7 +19,7 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 
 	constructor() {
 		super();
-		
+
 		window.addEventListener(
 			events.restartAfterKill,
 			this.handleRestartAfterKill,
@@ -32,6 +32,15 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 			false,
 		);
 	}
+
+	checkBombCollision = (runtime) => {
+		for (const bomb of runtime.objects.BombLine.instances()) {
+			if (bomb.testOverlap(this)) {
+				this.health -= config.bombPower;
+			}
+		}
+	}
+
 
 	checkBulletCollision(runtime) {
 		for (const bullet of runtime.objects.Bullet.instances()) {
@@ -90,5 +99,6 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 		}
 
 		this.checkBulletCollision(runtime);
+		this.checkBombCollision(runtime);
 	}
 }
