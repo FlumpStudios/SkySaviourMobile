@@ -1,10 +1,13 @@
 import PlayerInst from "./playerInst.js";
 import BulletInst from "./bulletInst.js";
 import EggEnemyInst from "./eggEnemyInst.js";
+import AstroidEnemyInst from "./astroidEnemyInst.js";
+
 import PowerUpInst from "./powerupinst.js";
 import ShapeExplosionEffectInst from "./shapeExplosionEffectInst.js";
 import PlayerExplosionEffectInst from "./playerExplosionEffectInst.js";
 import EggSpawnerInst from "./eggSpawnerInst.js";
+import AstroidSpawnerInst from "./astroidSpawnerInst.js";
 import { runGamescript } from "./gameScript.js";
 import { resetAllGlobals } from "./global.js";
 import * as config from "./config.js";
@@ -13,13 +16,15 @@ import * as sfxManager from "./sfxManager.js";
 
 runOnStartup(async runtime => {
 	runtime.addEventListener("beforeprojectstart", () => OnBeforeProjectStart(runtime));	
-	runtime.objects.Player.setInstanceClass(PlayerInst);
+	runtime.objects.Player.setInstanceClass(PlayerInst);	
+	runtime.objects.Astroid.setInstanceClass(AstroidEnemyInst);
 	runtime.objects.Powerup.setInstanceClass(PowerUpInst);	
 	runtime.objects.Bullet.setInstanceClass(BulletInst);
 	runtime.objects.EggEnemy.setInstanceClass(EggEnemyInst);
 	runtime.objects.PlayerDeathEffect.setInstanceClass(PlayerExplosionEffectInst);
 	runtime.objects.SquareShotEffect.setInstanceClass(ShapeExplosionEffectInst);
 	runtime.objects.EggSpawner.setInstanceClass(EggSpawnerInst);
+	runtime.objects.AstroidSpawner.setInstanceClass(AstroidSpawnerInst);
 });
 
 async function OnBeforeProjectStart(runtime) {
@@ -33,6 +38,10 @@ function Tick(runtime) {
 		runGamescript(runtime);
 		for (const player of runtime.objects.Player.instances()) {
 			player.update(runtime);
+		}
+
+		for (const astroid of runtime.objects.Astroid.instances()) {
+			astroid.update(runtime);
 		}
 
 		for (const bullet of runtime.objects.Bullet.instances()) {
@@ -62,6 +71,11 @@ function Tick(runtime) {
 		for (const powerup of runtime.objects.Powerup.instances()) {
 			powerup.update(runtime);
 		}
+
+		for (const astroidSpawner of runtime.objects.AstroidSpawner.instances()) {
+			astroidSpawner.update(runtime);
+		}
+
 
 
 		runtime.objects.ScoreText_ui.getFirstInstance().text = getScore().toString();

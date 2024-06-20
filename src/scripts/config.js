@@ -27,3 +27,4 @@ export const pointsBonusPickupAmount = 5000;
 export const startingBombCount = 0;
 export const bombClickY = 1198;
 export const bombPower = 10;
+export const maxPowerLevel = 3;

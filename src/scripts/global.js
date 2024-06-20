@@ -9,6 +9,12 @@ let chain = 0;
 let multiplier = 0;
 let isGameOver = false;
 let bombCount = 1;
+let powerLevel = 0;
+
+export const getPowerLevel = () => powerLevel;
+export const increasePowerLevel = () => powerLevel++;
+export const decreasePowerLevel = () => powerLevel--;
+export const resetPowerLevel = () => powerLevel = 0;
 
 export const getIsGameOver = () => isGameOver;
 export const setIsGameOver = (gameOver) => { isGameOver = gameOver }
@@ -38,7 +44,7 @@ export const addToChain = (c) => chain += c;
 
 export const getBombCount = () => bombCount;
 export const addToBombCount = (b) => bombCount += b;
-export const removeFromBombCount = () => bombCount --;
+export const removeFromBombCount = () => bombCount--;
 
 export const resetAllGlobals = () => {
     enemyHasReachedCity = false;
@@ -49,4 +55,5 @@ export const resetAllGlobals = () => {
     chain = 0;
     isGameOver = false;
     bombCount = 1;
+    powerLevel = 0;
 }

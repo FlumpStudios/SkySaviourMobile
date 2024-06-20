@@ -47,10 +47,22 @@ export const runGamescript = (runtime) => {
 
     if (currentWave === 1) {
         if (t === 0) {
-            runtime.objects.EggSpawner.createInstance(config.layers.game, 352, -32);
+            runtime.objects.AstroidSpawner.createInstance(config.layers.game, 352, -32);
             increaseLevelTime(1);
         }
         if (t === 15) {
+            runtime.objects.AstroidSpawner.getFirstInstance().destroy();
+            runEndofLevel();
+            increaseLevelTime(1);
+        }
+    }
+
+    if (currentWave === 2) {
+        if (t === 0) {
+            runtime.objects.EggSpawner.createInstance(config.layers.game, 352, -32);
+            increaseLevelTime(1);
+        }
+        if (t === 25) {
             runtime.objects.EggSpawner.getFirstInstance().destroy();
             runEndofLevel();
             increaseLevelTime(1);

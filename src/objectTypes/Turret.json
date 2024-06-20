@@ -1,14 +1,14 @@
 {
-	"name": "Bullet",
+	"name": "Turret",
 	"plugin-id": "Sprite",
-	"sid": 641672770531451,
+	"sid": 641793178584211,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [
 		{
-			"behaviorId": "Bullet",
-			"name": "Bullet",
-			"sid": 771594291025112
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 188203802280935
 		}
 	],
 	"effectTypes": [],
@@ -17,34 +17,20 @@
 			{
 				"frames": [
 					{
-						"width": 24,
-						"height": 14,
-						"originX": 0.5833333333333331,
-						"originY": 0.5,
+						"width": 14,
+						"height": 17,
+						"originX": 0.5,
+						"originY": 0.5294117647058824,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
-						"imageSpriteId": 8799467,
-						"collisionPoly": {
-							"points": [
-								1,
-								0.500000000000001,
-								0.75,
-								1,
-								0,
-								1,
-								0,
-								0,
-								0.75,
-								0
-							]
-						},
+						"imageSpriteId": 280918,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 841320209522609,
+				"sid": 151118487853625,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

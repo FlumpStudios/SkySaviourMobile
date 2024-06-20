@@ -1,10 +1,8 @@
 import * as config from "./config.js";
-import { setMultiplier, getEnemyHasReachedCity, getLives, removeLife, setEnemyHasReachedCity, setIsGameOver, getIsGameOver, addToScore, removeFromBombCount, getBombCount } from "./global.js";
+import * as global from "./global.js";
 import { clamp, waitForMillisecond } from "./utils.js";
 import * as events from "./events.js";
 import * as SfxManager from "./sfxManager.js";
-import { toRadians } from "./utils.js";
-
 export default class PlayerInst extends globalThis.ISpriteInstance {
     #hasSpawned = false;
     #bulletCount = config.maxBulletCount;
@@ -58,13 +56,13 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
 
             if (this.#lastMouseClick === false) {
                 if (y > config.bombClickY) {
-                    if (getBombCount() > 0) {
+                    if (global.getBombCount() > 0) {
                         let bombline1 = runtime.objects.BombLine.createInstance(config.layers.game, this.x, this.y);
                         let bombLine2 = runtime.objects.BombLine.createInstance(config.layers.game, this.x, this.y);
                         bombLine2.angle = 1.57;
                         bombline1.angle = 4.71;
                         SfxManager.PlayBombSounds();
-                        removeFromBombCount();
+                        global.removeFromBombCount();
                     }
                 }
             }
@@ -108,18 +106,33 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         this.#isInDestroyingCityState = false;
         this.x = config.playerStartPosition.x;
         this.y = config.playerStartPosition.y;
-        setEnemyHasReachedCity(false);
+        global.setEnemyHasReachedCity(false);
         this.#isInDeathState = false;
         this.#isReady = false;
         this.#lastMouseClick = false;
     }
 
     spawnBullet(runtime) {
-        if (this.getBulletCount() >= 0 && !getEnemyHasReachedCity()) {
+        if (this.getBulletCount() >= 0 && !global.getEnemyHasReachedCity()) {
             this.#shotCounter += runtime.dt;
             if (this.#shotCounter > config.shotInteval) {
                 SfxManager.PlayPlayerShoot();
-                runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x, this.y + config.shotOffsets.y);
+                if (global.getPowerLevel() < 1) {
+                    runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x, this.y + config.shotOffsets.y);
+                }
+
+                if (global.getPowerLevel() >= 1) {
+                    runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x + 10, this.y + config.shotOffsets.y);
+                    runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x - 10, this.y + config.shotOffsets.y);
+                }
+
+                if (global.getPowerLevel() >= 2) {
+                    for (const turret of runtime.objects.Turret.getAllInstances()) {
+                        const bullet = runtime.objects.Bullet.createInstance(config.layers.game, turret.x, turret.y);
+                        bullet.colorRgb = [1, 1, 0];
+                    }
+                }
+
                 this.#shotCounter = 0;
                 this.removeBullet();
             }
@@ -159,7 +172,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         const liveSprites = runtime.objects.Life_UI.getAllInstances();
 
         for (let i = 0; i < liveSprites.length; i++) {
-            if (i >= getLives()) {
+            if (i >= global.getLives()) {
                 liveSprites[i].isVisible = false;
             }
             else {
@@ -180,7 +193,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
             m = Math.ceil(((this.y / horizony * config.multiplierDivisor) - config.multiplierDivisor) * -1);
         }
         var r = clamp(m, 1, config.maxMultiplier);
-        setMultiplier(r);
+        global.setMultiplier(r);
         multiplierText.text = "X" + r.toString();
     }
 
@@ -188,7 +201,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         SfxManager.PlayPlayerSpawnSfx();
         this.width = config.playerSpawnInSize;
         this.height = config.playerSpawnInSize;
-        removeLife();
+        global.removeLife();
         window.dispatchEvent(new CustomEvent(events.restartAfterKill));
     }
 
@@ -212,18 +225,23 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         if (powerUp.testOverlap(this)) {
             runtime.objects.PowerUpParticles.createInstance(config.layers.game, powerUp.x, powerUp.y);
             const powerUpType = powerUp.getCurrentPowerup();
+            const powerUpText = runtime.objects.PowerUpText.createInstance(config.layers.game, powerUp.x, powerUp.y);
+
             switch (powerUpType) {
                 case "Gun":
-                    // TODO: Handle weapon powerup
+                    powerUpText.text = "Fire Power!"
+                    global.increasePowerLevel();
                     break;
                 case "Speed":
+                    powerUpText.text = "Speed Up!";
                     this.behaviors["8Direction"].maxSpeed += config.moveSpeedPowerUpBonus;
                     break;
                 case "Points":
-                    globa
-                    addToScore(config.pointsBonusPickupAmount);
+                    powerUpText.text = config.pointsBonusPickupAmount.toString();
+                    global.addToScore(config.pointsBonusPickupAmount);
                     break;
                 case "Bomb":
+                    powerUpText.text = "Bomb";
                     addToBombCount(1);
                     break;
             }
@@ -241,16 +259,25 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
             this.#hasSpawned = true;
         }
 
-        if (getLives() < 0) {
-            if (!getIsGameOver()) {
+        if (global.getLives() < 0) {
+            if (!global.getIsGameOver()) {
                 waitForMillisecond(3000).then(() => runtime.goToLayout("MainMenu"));
             }
-            setIsGameOver(true);
+            global.setIsGameOver(true);
         }
 
         this.#handlePowerUpCollision(runtime);
 
-        if (this.#isInDeathState || getIsGameOver()) {
+        for (const turret of runtime.objects.Turret.getAllInstances()) {
+            if (global.getPowerLevel() < 2) {
+                turret.isVisible = false;
+            }
+            else {
+                turret.isVisible = true;
+            }
+        }
+
+        if (this.#isInDeathState || global.getIsGameOver()) {
             this.x = -1000;
             return;
         }
@@ -286,7 +313,6 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
             }
         }
         // Bullet charging
-        // TODO: Clean this up
         if (this.y < runtime.objects.Horizon.getFirstInstance().y + (this.width / 2)) {
             elec.isVisible = false;
             this.behaviors["Sine"].isEnabled = false;
@@ -329,7 +355,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         }
 
         elec.y = this.y;
-        if (getEnemyHasReachedCity()) {
+        if (global.getEnemyHasReachedCity()) {
             this.behaviors["8Direction"].isEnabled = false;
             if (!this.#isInDestroyingCityState) {
                 this.#isInDestroyingCityState = true;
@@ -354,7 +380,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
                 this.#spawnCityExplosion(runtime, 900, 410, 1220);
                 this.#spawnCityExplosion(runtime, 950, 602, 1218);
                 waitForMillisecond(950).then(() => {
-                    removeLife();
+                    global.removeLife();
                     window.dispatchEvent(new CustomEvent(events.restartAfterKill));
                     this.resetVars();
                     this.#resetAfterKill();

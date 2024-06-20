@@ -1,24 +1,14 @@
 {
-	"name": "EggEnemy",
+	"name": "AstroidSpawner",
 	"plugin-id": "Sprite",
-	"sid": 876621990326169,
+	"sid": 115919777236590,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [
 		{
 			"behaviorId": "Sin",
 			"name": "Sine",
-			"sid": 244912610358840
-		},
-		{
-			"behaviorId": "Bullet",
-			"name": "Bullet",
-			"sid": 907170088344763
-		},
-		{
-			"behaviorId": "Sin",
-			"name": "Sine2",
-			"sid": 656594952586031
+			"sid": 301956865827457
 		}
 	],
 	"effectTypes": [],
@@ -30,29 +20,17 @@
 						"width": 16,
 						"height": 16,
 						"originX": 0.5,
-						"originY": 0.4666666666666667,
+						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
-						"imageSpriteId": 8158553,
-						"collisionPoly": {
-							"points": [
-								0,
-								1,
-								0,
-								0,
-								1,
-								0,
-								1,
-								1
-							]
-						},
+						"imageSpriteId": 6513752,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 731093452203288,
+				"sid": 381103108162386,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

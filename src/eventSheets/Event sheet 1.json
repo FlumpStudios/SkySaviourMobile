@@ -107,9 +107,46 @@
 						"stereo-pan": "0",
 						"tag-optional": "\"\""
 					}
+				},
+				{
+					"id": "pin-to-object-properties",
+					"objectClass": "Turret",
+					"sid": 643657311307524,
+					"behaviorType": "Pin",
+					"parameters": {
+						"pin-to": "Player",
+						"x": true,
+						"y": true,
+						"angle": false,
+						"width-type": "no",
+						"height-type": "no",
+						"z": false
+					}
 				}
 			],
 			"sid": 226378317987978
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "PowerUpText",
+					"sid": 291201292182704
+				}
+			],
+			"actions": [
+				{
+					"id": "set-angle-of-motion",
+					"objectClass": "PowerUpText",
+					"sid": 959589690020888,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"angle": "90"
+					}
+				}
+			],
+			"sid": 177506817600271
 		}
 	],
 	"sid": 640881692263834

@@ -171,7 +171,11 @@
 			"PowerUpParticles",
 			"BombLine",
 			"BombBar",
-			"BombText"
+			"BombText",
+			"Turret",
+			"PowerUpText",
+			"Astroid",
+			"AstroidSpawner"
 		],
 		"subfolders": []
 	},
@@ -340,6 +344,22 @@
 					"name": "powerupinst.js",
 					"type": "application/javascript",
 					"sid": 197951569304937,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "astroidEnemyInst.js",
+					"type": "application/javascript",
+					"sid": 435220442493391,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "astroidSpawnerInst.js",
+					"type": "application/javascript",
+					"sid": 596024551142652,
 					"script-info": {
 						"purpose": "none"
 					}
