@@ -1,5 +1,6 @@
 import { random } from "./utils.js";
 import * as config from "./config.js";
+import * as global from "./global.js";
 export default class PowerUpInst extends globalThis.ISpriteInstance {
     constructor() {
         super();
@@ -15,30 +16,49 @@ export default class PowerUpInst extends globalThis.ISpriteInstance {
     getCurrentPowerup = () => this.#currentPowerUp;
 
     #chooseRandomPowerUp = () => {
-        const r = random(4);
+        const r = random(5);
         let response = "";
 
         switch (r) {
             case 0:
+                if (global.getPowerLevel() >= config.maxPowerLevel) {
+                    this.#chooseRandomPowerUp();
+                    return;
+                }
                 response = "Gun";
                 break;
             case 1:
+                if (global.getPlayerMoveSpeed() >= config.maxMoveSpeed) {
+                    this.#chooseRandomPowerUp();
+                    return;
+                }
                 response = "Speed";
                 break;
             case 2:
                 response = "Points";
                 break;
             case 3:
+                if (global.getBombCount() >= config.maxBombCount) {
+                    this.#chooseRandomPowerUp();
+                    return;
+                }
                 response = "Bomb";
+                break;
+            case 4:
+                if (global.getDoubleShot()) {
+                    this.#chooseRandomPowerUp();
+                    return;
+                }
+                response = "DoubleShot";
                 break;
             default:
                 response = "Points";
                 break;
         }
-        if (this.#currentPowerUp === response) { 
+        if (this.#currentPowerUp === response) {
             this.#chooseRandomPowerUp();
             return;
-        }        
+        }
 
         this.#currentPowerUp = response;
         this.setAnimation(response);
@@ -46,7 +66,7 @@ export default class PowerUpInst extends globalThis.ISpriteInstance {
 
 
 
-    update = (runtime) => {        
+    update = (runtime) => {
         this.#timer += runtime.dt;
         if (this.#timer > config.powerUpSwitchTime) {
             this.#chooseRandomPowerUp();

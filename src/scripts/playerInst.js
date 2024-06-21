@@ -32,8 +32,6 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
 
         this.width = config.playerSpawnInSize;
         this.height = config.playerSpawnInSize;
-
-        this.behaviors["8Direction"].maxSpeed = config.moveSpeed;
     }
 
 
@@ -119,17 +117,57 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
                 SfxManager.PlayPlayerShoot();
                 if (global.getPowerLevel() < 1) {
                     runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x, this.y + config.shotOffsets.y);
+                    if (global.getDoubleShot()) {
+                        waitForMillisecond(400).then(() => {
+                            const secBullet = runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x, this.y + config.shotOffsets.y);
+                            secBullet.width = 24;
+                            secBullet.height = 14;
+                            secBullet.colorRgb = [0, 0.5, 1];
+                            SfxManager.PlayPlayerShoot();
+
+                        });
+                    }
                 }
 
                 if (global.getPowerLevel() >= 1) {
                     runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x + 10, this.y + config.shotOffsets.y);
                     runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x - 10, this.y + config.shotOffsets.y);
+                    if (global.getDoubleShot()) {
+                        waitForMillisecond(400).then(() => {
+                            const secBullet1 = runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x + 10, this.y + config.shotOffsets.y);
+                            const secBullet2 = runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x - 10, this.y + config.shotOffsets.y);
+
+                            secBullet1.width = 24;
+                            secBullet1.height = 14;
+                            secBullet1.colorRgb = [0, 0.5, 1];
+                            secBullet2.width = 24;
+                            secBullet2.height = 14;
+                            secBullet2.colorRgb = [0, 0.5, 1];
+                            SfxManager.PlayPlayerShoot();
+                        });
+                    }
+
                 }
 
                 if (global.getPowerLevel() >= 2) {
                     for (const turret of runtime.objects.Turret.getAllInstances()) {
                         const bullet = runtime.objects.Bullet.createInstance(config.layers.game, turret.x, turret.y);
                         bullet.colorRgb = [1, 1, 0];
+
+                        if (global.getDoubleShot()) {
+                            waitForMillisecond(400).then(() => {
+                                const secBullet = runtime.objects.Bullet.createInstance(config.layers.game, turret.x, turret.y);
+                                secBullet.width = 24;
+                                secBullet.height = 14;
+                                secBullet.colorRgb = [0, 0.5, 1];
+                                secBullet.width = 24;
+                                secBullet.height = 14;
+                                secBullet.colorRgb = [1, 0.5, 0];
+                                SfxManager.PlayPlayerShoot();
+                            });
+
+                        }
+
                     }
                 }
 
@@ -229,12 +267,12 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
 
             switch (powerUpType) {
                 case "Gun":
-                    powerUpText.text = "Fire Power!"
+                    powerUpText.text = "Fire Power"
                     global.increasePowerLevel();
                     break;
                 case "Speed":
-                    powerUpText.text = "Speed Up!";
-                    this.behaviors["8Direction"].maxSpeed += config.moveSpeedPowerUpBonus;
+                    powerUpText.text = "Speed Up";
+                    global.increasePlayerSpeed(config.moveSpeedPowerUpBonus);
                     break;
                 case "Points":
                     powerUpText.text = config.pointsBonusPickupAmount.toString();
@@ -242,7 +280,10 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
                     break;
                 case "Bomb":
                     powerUpText.text = "Bomb";
-                    addToBombCount(1);
+                    global.addToBombCount(1);
+                case "DoubleShot":
+                    powerUpText.text = "Double Shot";
+                    global.setDoubleShot(true);
                     break;
             }
 
@@ -265,6 +306,8 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
             }
             global.setIsGameOver(true);
         }
+
+        this.behaviors["8Direction"].maxSpeed = global.getPlayerMoveSpeed();
 
         this.#handlePowerUpCollision(runtime);
 

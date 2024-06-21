@@ -10,6 +10,16 @@ let multiplier = 0;
 let isGameOver = false;
 let bombCount = 1;
 let powerLevel = 0;
+let doubleShot = false;
+let playerMoveSpeed = config.moveSpeed;
+
+export const getPlayerMoveSpeed = () => playerMoveSpeed;
+
+export const increasePlayerSpeed = (speed) => { playerSpeed += speed }
+export const decreasePlayerSpeed = (speed) => { playerSpeed -= speed }
+
+export const getDoubleShot = () => doubleShot;
+export const setDoubleShot = (set) => { doubleShot = set };
 
 export const getPowerLevel = () => powerLevel;
 export const increasePowerLevel = () => powerLevel++;
@@ -56,4 +66,6 @@ export const resetAllGlobals = () => {
     isGameOver = false;
     bombCount = 1;
     powerLevel = 0;
+    doubleShot = false;
+    playerMoveSpeed = config.moveSpeed;
 }
