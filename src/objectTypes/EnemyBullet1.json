@@ -1,0 +1,56 @@
+{
+	"name": "EnemyBullet1",
+	"plugin-id": "Sprite",
+	"sid": 798664322992964,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet",
+			"sid": 815721869812310
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 12,
+						"height": 12,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 1771380,
+						"collisionPoly": {
+							"points": [
+								0.08333333333333333,
+								0.08333333333333333,
+								0.9166666666666666,
+								0.08333333333333333,
+								0.9166666666666666,
+								0.9166666666666666,
+								0.08333333333333333,
+								0.9166666666666666
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 248761933276937,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

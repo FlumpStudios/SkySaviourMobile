@@ -1,0 +1,59 @@
+{
+	"name": "EnemyBulletSpawner1",
+	"plugin-id": "Sprite",
+	"sid": 206523227541139,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "SpawnInterval",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 249907550752842
+		},
+		{
+			"name": "BulletSpeed",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 928643605286822
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Rotate",
+			"name": "Rotate",
+			"sid": 906919539420157
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 16,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 8376826,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 353758558601966,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

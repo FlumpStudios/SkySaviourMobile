@@ -1,8 +1,9 @@
 import PlayerInst from "./playerInst.js";
 import BulletInst from "./bulletInst.js";
 import EggEnemyInst from "./eggEnemyInst.js";
+import BulletEnemy1Inst from "./BulletEnemy1Inst.js"
 import AstroidEnemyInst from "./astroidEnemyInst.js";
-
+import BulletSpawnerInst from "./bulletSpawnerInst.js"
 import PowerUpInst from "./powerupinst.js";
 import ShapeExplosionEffectInst from "./shapeExplosionEffectInst.js";
 import PlayerExplosionEffectInst from "./playerExplosionEffectInst.js";
@@ -16,6 +17,10 @@ import * as sfxManager from "./sfxManager.js";
 
 runOnStartup(async runtime => {
 	runtime.addEventListener("beforeprojectstart", () => OnBeforeProjectStart(runtime));	
+	runtime.objects.Player.setInstanceClass(PlayerInst);	
+	runtime.objects.BulletEnemy1.setInstanceClass(BulletEnemy1Inst);	
+	
+	runtime.objects.EnemyBulletSpawner1.setInstanceClass(BulletSpawnerInst);
 	runtime.objects.Player.setInstanceClass(PlayerInst);	
 	runtime.objects.Astroid.setInstanceClass(AstroidEnemyInst);
 	runtime.objects.Powerup.setInstanceClass(PowerUpInst);	
@@ -76,6 +81,13 @@ function Tick(runtime) {
 			astroidSpawner.update(runtime);
 		}
 
+		for (const bulletSpawner of runtime.objects.EnemyBulletSpawner1.instances()) {
+			bulletSpawner.update(runtime);
+		}
+
+		for (const bulletEnemy1 of runtime.objects.BulletEnemy1.instances()) {
+			bulletEnemy1.update(runtime);
+		}
 
 
 		runtime.objects.ScoreText_ui.getFirstInstance().text = getScore().toString();

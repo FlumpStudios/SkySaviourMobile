@@ -175,7 +175,10 @@
 			"Turret",
 			"PowerUpText",
 			"Astroid",
-			"AstroidSpawner"
+			"AstroidSpawner",
+			"EnemyBullet1",
+			"EnemyBulletSpawner1",
+			"BulletEnemy1"
 		],
 		"subfolders": []
 	},
@@ -360,6 +363,22 @@
 					"name": "astroidSpawnerInst.js",
 					"type": "application/javascript",
 					"sid": 596024551142652,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "bulletSpawnerInst.js",
+					"type": "application/javascript",
+					"sid": 878921490807458,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "BulletEnemy1Inst.js",
+					"type": "application/javascript",
+					"sid": 605953486965321,
 					"script-info": {
 						"purpose": "none"
 					}

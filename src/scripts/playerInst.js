@@ -3,6 +3,7 @@ import * as global from "./global.js";
 import { clamp, waitForMillisecond } from "./utils.js";
 import * as events from "./events.js";
 import * as SfxManager from "./sfxManager.js";
+
 export default class PlayerInst extends globalThis.ISpriteInstance {
     #hasSpawned = false;
     #bulletCount = config.maxBulletCount;
@@ -249,10 +250,28 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
             runtime.objects.DeathParticles.createInstance(config.layers.game, this.x, this.y);
             runtime.objects.PlayerDeathEffect.createInstance(config.layers.game, this.x, this.y);
             this.#isInDeathState = true;
+
+            for (const enemyBullet of runtime.objects.EnemyBullet1.getAllInstances()) {
+                
+                enemyBullet.destroy();
+            }
+
+            for (const enemyBulletSpawner of runtime.objects.EnemyBulletSpawner1.getAllInstances()) {                
+                enemyBulletSpawner.destroy();
+            }
+
             waitForMillisecond(850).then(() => {
                 this.resetVars();
                 this.#resetAfterKill();
             });
+        }
+    }
+
+    #handleBulletCollision = (runtime) => {
+        const enemyBullet1 = runtime.objects.EnemyBullet1.getFirstInstance();
+        if (!enemyBullet1 || this.#isInDeathState) { return; }
+        if (enemyBullet1.testOverlap(this)) {
+            this.kill(runtime);
         }
     }
 
@@ -310,6 +329,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         this.behaviors["8Direction"].maxSpeed = global.getPlayerMoveSpeed();
 
         this.#handlePowerUpCollision(runtime);
+        this.#handleBulletCollision(runtime);
 
         for (const turret of runtime.objects.Turret.getAllInstances()) {
             if (global.getPowerLevel() < 2) {

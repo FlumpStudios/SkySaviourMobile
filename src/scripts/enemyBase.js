@@ -60,6 +60,12 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 		}
 	}
 
+	#killPlayer = (runtime) => {
+		if (runtime.objects.Player.getFirstInstance().testOverlap(this)) {
+			player.kill(runtime);
+		}
+	}
+
 	update(runtime) {
 		// May as well destory all enemies if the end up past the bottom of the screen.		
 		if (this.health < 0) {
@@ -94,9 +100,7 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 			}
 		}
 
-		if (runtime.objects.Player.getFirstInstance().testOverlap(this)) {
-			player.kill(runtime);
-		}
+
 
 		this.checkBulletCollision(runtime);
 		this.checkBombCollision(runtime);
