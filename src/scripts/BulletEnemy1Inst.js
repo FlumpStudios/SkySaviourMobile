@@ -9,6 +9,14 @@ export default class BulletEnemy1Inst extends enemyBase {
         this.health = 3;
         this.worth = 25;
         this.#bulletSpawner = this.runtime.objects.EnemyBulletSpawner1.createInstance(config.layers.game, this.x, this.y);
+        this.#bulletSpawner.behaviors["Rotate"].isEnabled = false;
+        this.#bulletSpawner.behaviors["Sine"].isEnabled = false;
+        this.#bulletSpawner.instVars.SpawnInterval = 1;
+        this.#bulletSpawner.instVars.BulletSpeed = 250;
+        
+        // this.#bulletSpawner.behaviors["Sine"].isEnabled = true;
+        // this.#bulletSpawner.behaviors["Sine"].period = 4;
+        // this.#bulletSpawner.behaviors["Sine"].magnitude = 0.75;
     }
 
     #pinSpawner = () => {
@@ -27,6 +35,10 @@ export default class BulletEnemy1Inst extends enemyBase {
         if (this.health < 0) {
             runtime.objects.SquareShotEffect.createInstance(config.layers.game, this.x, this.y);
             runtime.objects.ExplosionParticle.createInstance(config.layers.game, this.x, this.y);
+        }
+
+        if (this.y > 200 && this.behaviors["Bullet"].speed > 0) {
+            this.behaviors["Bullet"].speed -= (runtime.dt * 100);
         }
     }
 }

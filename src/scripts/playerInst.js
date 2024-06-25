@@ -241,6 +241,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         this.width = config.playerSpawnInSize;
         this.height = config.playerSpawnInSize;
         global.removeLife();
+        this.resetVars();
         window.dispatchEvent(new CustomEvent(events.restartAfterKill));
     }
 
@@ -251,27 +252,28 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
             runtime.objects.PlayerDeathEffect.createInstance(config.layers.game, this.x, this.y);
             this.#isInDeathState = true;
 
-            for (const enemyBullet of runtime.objects.EnemyBullet1.getAllInstances()) {
-                
+            for (const enemyBullet of runtime.objects.EnemyBullet.getAllInstances()) {
+
                 enemyBullet.destroy();
             }
 
-            for (const enemyBulletSpawner of runtime.objects.EnemyBulletSpawner1.getAllInstances()) {                
+            for (const enemyBulletSpawner of runtime.objects.EnemyBulletSpawner1.getAllInstances()) {
                 enemyBulletSpawner.destroy();
             }
 
             waitForMillisecond(850).then(() => {
-                this.resetVars();
                 this.#resetAfterKill();
             });
         }
     }
 
     #handleBulletCollision = (runtime) => {
-        const enemyBullet1 = runtime.objects.EnemyBullet1.getFirstInstance();
-        if (!enemyBullet1 || this.#isInDeathState) { return; }
-        if (enemyBullet1.testOverlap(this)) {
-            this.kill(runtime);
+        if (this.#isInDeathState) { return; }
+
+        for (const enemyBullet of runtime.objects.EnemyBullet.getAllInstances()) {
+            if (enemyBullet.testOverlap(this)) {
+                this.kill(runtime);
+            }
         }
     }
 
@@ -443,10 +445,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
                 this.#spawnCityExplosion(runtime, 900, 410, 1220);
                 this.#spawnCityExplosion(runtime, 950, 602, 1218);
                 waitForMillisecond(950).then(() => {
-                    global.removeLife();
-                    window.dispatchEvent(new CustomEvent(events.restartAfterKill));
-                    this.resetVars();
-                    this.#resetAfterKill();
+                    this.kill(runtime);
                 });
             }
         }

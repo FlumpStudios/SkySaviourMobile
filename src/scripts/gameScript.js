@@ -59,13 +59,36 @@ export const runGamescript = (runtime) => {
 
     if (currentWave === 2) {
         if (t === 0) {
+            runtime.objects.BulletEnemy1.createInstance(config.layers.game, 98, -100);
+            increaseLevelTime(1);
+        }
+        
+        if (t === 3) {
+            runtime.objects.BulletEnemy1.createInstance(config.layers.game, 584, -100);            
+            increaseLevelTime(1);
+        }
+        
+        if (t === 4) {
+            increaseLevelTime(1);
+            runtime.objects.BulletEnemy1.createInstance(config.layers.game, 310, -188);                        
+        }
+        if (t === 25) {
+            runEndofLevel();
+            increaseLevelTime(1);
+        }
+    }
+
+    if (currentWave === 3) {
+        if (t === 0) {
             runtime.objects.EggSpawner.createInstance(config.layers.game, 352, -32);
             increaseLevelTime(1);
         }
-        if (t === 25) {
+        if (t === 35) {
             runtime.objects.EggSpawner.getFirstInstance().destroy();
             runEndofLevel();
             increaseLevelTime(1);
         }
     }
 }
+
+//BulletEnemy1

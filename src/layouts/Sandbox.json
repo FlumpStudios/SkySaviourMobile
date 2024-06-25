@@ -724,21 +724,35 @@
 					"uid": 57,
 					"instanceVariables": {
 						"SpawnInterval": 0.25,
-						"BulletSpeed": 100
+						"BulletSpeed": 250
 					},
 					"behaviors": {
 						"Rotate": {
 							"properties": {
 								"speed": 180,
 								"acceleration": 0,
+								"enabled": false,
+								"live-preview": false
+							}
+						},
+						"Sine": {
+							"properties": {
+								"movement": "angle",
+								"wave": "sine",
+								"period": 4,
+								"period-random": 0,
+								"period-offset": 0,
+								"period-offset-random": 0,
+								"magnitude": 50,
+								"magnitude-random": 0,
 								"enabled": true,
 								"live-preview": false
 							}
 						}
 					},
 					"world": {
-						"x": 881.5660400390625,
-						"y": 253.9056396484375,
+						"x": 445.7327067057282,
+						"y": 378.9056396484378,
 						"width": 16,
 						"height": 16,
 						"originX": 0.5,
@@ -749,12 +763,12 @@
 							1,
 							1
 						],
-						"angle": 0,
+						"angle": 1.5707963267948966,
 						"zElevation": 0
 					}
 				},
 				{
-					"type": "EnemyBullet1",
+					"type": "EnemyBullet",
 					"properties": {
 						"initially-visible": true,
 						"initial-animation": "Animation 1",

@@ -24,6 +24,11 @@
 			"behaviorId": "Rotate",
 			"name": "Rotate",
 			"sid": 906919539420157
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "Sine",
+			"sid": 733072836951027
 		}
 	],
 	"effectTypes": [],

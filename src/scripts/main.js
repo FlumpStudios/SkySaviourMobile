@@ -2,6 +2,7 @@ import PlayerInst from "./playerInst.js";
 import BulletInst from "./bulletInst.js";
 import EggEnemyInst from "./eggEnemyInst.js";
 import BulletEnemy1Inst from "./BulletEnemy1Inst.js"
+import EnemyBulletInst from "./enemyBulletInst.js";
 import AstroidEnemyInst from "./astroidEnemyInst.js";
 import BulletSpawnerInst from "./bulletSpawnerInst.js"
 import PowerUpInst from "./powerupinst.js";
@@ -19,6 +20,7 @@ runOnStartup(async runtime => {
 	runtime.addEventListener("beforeprojectstart", () => OnBeforeProjectStart(runtime));	
 	runtime.objects.Player.setInstanceClass(PlayerInst);	
 	runtime.objects.BulletEnemy1.setInstanceClass(BulletEnemy1Inst);	
+	runtime.objects.EnemyBullet.setInstanceClass(EnemyBulletInst);	
 	
 	runtime.objects.EnemyBulletSpawner1.setInstanceClass(BulletSpawnerInst);
 	runtime.objects.Player.setInstanceClass(PlayerInst);	
@@ -89,6 +91,9 @@ function Tick(runtime) {
 			bulletEnemy1.update(runtime);
 		}
 
+		for (const enemyBullet of runtime.objects.EnemyBullet.instances()) {
+			enemyBullet.update(runtime);
+		}
 
 		runtime.objects.ScoreText_ui.getFirstInstance().text = getScore().toString();
 		if (getIsGameOver()) {

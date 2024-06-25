@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 38802,
+	"savedWithRelease": 39700,
 	"name": "Sky Saviour Mobile",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -176,7 +176,7 @@
 			"PowerUpText",
 			"Astroid",
 			"AstroidSpawner",
-			"EnemyBullet1",
+			"EnemyBullet",
 			"EnemyBulletSpawner1",
 			"BulletEnemy1"
 		],
@@ -379,6 +379,14 @@
 					"name": "BulletEnemy1Inst.js",
 					"type": "application/javascript",
 					"sid": 605953486965321,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "enemyBulletInst.js",
+					"type": "application/javascript",
+					"sid": 791494644744602,
 					"script-info": {
 						"purpose": "none"
 					}
@@ -875,7 +883,6 @@
 		"gpuPreference": "high-performance",
 		"scriptsType": "module",
 		"framerateMode": "vsync",
-		"compositingMode": "standard",
 		"sampling": "nearest",
 		"downscaling": "medium",
 		"renderingMode": "auto",

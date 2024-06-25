@@ -10,7 +10,7 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 	isSeaking = false;
 
 	handleRestartAfterKill = () => {
-		this.destroy();
+		this.#destroy();			
 	}
 
 	handleLevelEnd = () => {
@@ -23,14 +23,20 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 		window.addEventListener(
 			events.restartAfterKill,
 			this.handleRestartAfterKill,
-			false,
+			false
 		);
 
 		window.addEventListener(
 			events.levelEnd,
 			this.handleLevelEnd,
-			false,
+			false
 		);
+	}
+
+	#destroy = () => {
+		try {
+			this.destroy();
+		} catch { }
 	}
 
 	checkBombCollision = (runtime) => {
@@ -60,17 +66,11 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 		}
 	}
 
-	#killPlayer = (runtime) => {
-		if (runtime.objects.Player.getFirstInstance().testOverlap(this)) {
-			player.kill(runtime);
-		}
-	}
-
 	update(runtime) {
 		// May as well destory all enemies if the end up past the bottom of the screen.		
 		if (this.health < 0) {
 			addToScore(this.worth);
-			this.destroy();
+			this.#destroy();
 			SfxMangager.PlayEnemyExplosion();
 		}
 
@@ -89,7 +89,7 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 		}
 
 		if (config.isOutsideBottomOfLayout) {
-			this.destroy();
+			this.#destroy();			
 		}
 
 		const player = runtime.objects.Player.getFirstInstance();
@@ -100,7 +100,9 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 			}
 		}
 
-
+		if (runtime.objects.Player.getFirstInstance().testOverlap(this)) {
+			player.kill(runtime);
+		}
 
 		this.checkBulletCollision(runtime);
 		this.checkBombCollision(runtime);
