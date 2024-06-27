@@ -178,7 +178,8 @@
 			"AstroidSpawner",
 			"EnemyBullet",
 			"EnemyBulletSpawner1",
-			"BulletEnemy1"
+			"BulletEnemy1",
+			"HitPoint"
 		],
 		"subfolders": []
 	},

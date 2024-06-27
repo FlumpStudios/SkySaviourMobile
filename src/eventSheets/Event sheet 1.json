@@ -122,6 +122,21 @@
 						"height-type": "no",
 						"z": false
 					}
+				},
+				{
+					"id": "pin-to-object-properties",
+					"objectClass": "HitPoint",
+					"sid": 774606799260489,
+					"behaviorType": "Pin",
+					"parameters": {
+						"pin-to": "Player",
+						"x": true,
+						"y": true,
+						"angle": false,
+						"width-type": "no",
+						"height-type": "no",
+						"z": false
+					}
 				}
 			],
 			"sid": 226378317987978

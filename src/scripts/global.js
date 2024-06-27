@@ -3,7 +3,7 @@ import * as config from "./config.js";
 let enemyHasReachedCity = false;
 let playerLives = config.startingLives;
 let levelTime = -5;
-let currentWave = 1;
+let currentWave = config.startingLevel;
 let score = 0;
 let chain = 0;
 let multiplier = 0;
@@ -15,8 +15,8 @@ let playerMoveSpeed = config.moveSpeed;
 
 export const getPlayerMoveSpeed = () => playerMoveSpeed;
 
-export const increasePlayerSpeed = (speed) => { playerSpeed += speed }
-export const decreasePlayerSpeed = (speed) => { playerSpeed -= speed }
+export const increasePlayerSpeed = (speed) => { playerMoveSpeed += speed }
+export const decreasePlayerSpeed = (speed) => { playerMoveSpeed -= speed }
 
 export const getDoubleShot = () => doubleShot;
 export const setDoubleShot = (set) => { doubleShot = set };
@@ -60,7 +60,7 @@ export const resetAllGlobals = () => {
     enemyHasReachedCity = false;
     playerLives = config.startingLives;
     levelTime = -5;
-    currentWave = 1;
+    currentWave = config.startingLevel;
     score = 0;
     chain = 0;
     isGameOver = false;

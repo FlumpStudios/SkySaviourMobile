@@ -1,15 +1,38 @@
-import * as config from "./config.js";
 import { getEnemyHasReachedCity } from "./global.js"
-export default class EnemyBulletInst extends globalThis.ISpriteInstance {
+import * as events from "./events.js";
+
+export default class EnemyBulletInst extends globalThis.ISpriteInstance {    
     constructor() {
         super();
+        window.addEventListener(
+            events.restartAfterKill,
+            this.#handleRestartAfterKill,
+            false        
+        );
+    }
+    
+    #handleRestartAfterKill = () => {
+        this.destroy();
+    }
+
+    #handlePlayerCollision = (runtime) => {
+        const player = runtime.objects.Player.getFirstInstance();
+
+        if (runtime.objects.HitPoint.getFirstInstance().testOverlap(this)) {			
+            player.kill(runtime);
+            this.destroy();
+		}
     }
 
     update = (runtime) => {
-        if (getEnemyHasReachedCity()) { 
+        if (getEnemyHasReachedCity()) {
             if (this.behaviors["Bullet"]) {
-				this.behaviors["Bullet"].isEnabled = false
-			}
+                this.behaviors["Bullet"].isEnabled = false
+            }
+        }
+        else
+        {
+            this.#handlePlayerCollision(runtime);
         }
     }
 }

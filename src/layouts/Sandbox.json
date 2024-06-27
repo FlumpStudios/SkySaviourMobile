@@ -477,7 +477,7 @@
 					"behaviors": {
 						"Bullet": {
 							"properties": {
-								"speed": 100,
+								"speed": 175,
 								"acceleration": 0,
 								"gravity": 0,
 								"bounce-off-solids": true,
@@ -771,7 +771,7 @@
 					"type": "EnemyBullet",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Animation 1",
+						"initial-animation": "1",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -794,10 +794,10 @@
 					"world": {
 						"x": 681.5660400390625,
 						"y": 257.9056396484375,
-						"width": 32,
-						"height": 32,
-						"originX": 0.5,
-						"originY": 0.5,
+						"width": 42.666666666666664,
+						"height": 24,
+						"originX": 0,
+						"originY": 0.4444444444444444,
 						"color": [
 							1,
 							1,
@@ -818,7 +818,9 @@
 						"live-preview": false
 					},
 					"uid": 60,
-					"instanceVariables": {},
+					"instanceVariables": {
+						"BulletType": 1
+					},
 					"behaviors": {
 						"Sine": {
 							"properties": {

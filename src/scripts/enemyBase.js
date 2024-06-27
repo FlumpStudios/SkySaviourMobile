@@ -8,9 +8,12 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 	worth = 10;
 	health = 0;
 	isSeaking = false;
+	shouldExplodeOnDeath = true;
 
 	handleRestartAfterKill = () => {
-		this.#destroy();			
+		if (this.shouldExplodeOnDeath) {
+			this.#destroy();
+		}
 	}
 
 	handleLevelEnd = () => {
@@ -89,7 +92,7 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 		}
 
 		if (config.isOutsideBottomOfLayout) {
-			this.#destroy();			
+			this.#destroy();
 		}
 
 		const player = runtime.objects.Player.getFirstInstance();
@@ -100,7 +103,7 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 			}
 		}
 
-		if (runtime.objects.Player.getFirstInstance().testOverlap(this)) {
+		if (runtime.objects.HitPoint.getFirstInstance().testOverlap(this)) {
 			player.kill(runtime);
 		}
 
