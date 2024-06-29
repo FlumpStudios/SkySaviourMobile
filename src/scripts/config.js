@@ -29,4 +29,4 @@ export const bombClickY = 1198;
 export const bombPower = 10;
 export const maxBombCount = 3;
 export const maxPowerLevel = 2;
-export const startingLevel = 2;
+export const startingLevel = 3;

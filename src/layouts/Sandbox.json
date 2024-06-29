@@ -56,6 +56,14 @@
 								"enabled": true,
 								"live-preview": false
 							}
+						},
+						"Rotate": {
+							"properties": {
+								"speed": 180,
+								"acceleration": 0,
+								"enabled": true,
+								"live-preview": false
+							}
 						}
 					},
 					"world": {
