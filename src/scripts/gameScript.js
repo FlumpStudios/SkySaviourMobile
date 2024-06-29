@@ -80,7 +80,8 @@ export const runGamescript = (runtime) => {
 
     if (currentWave === 3) {
         if (t === 0) {
-            runtime.objects.EggSpawner.createInstance(config.layers.game, 352, -32);
+            const spawner = runtime.objects.EggSpawner.createInstance(config.layers.game, 352, -32);
+            spawner.spawnInterval = 2.5;
             increaseLevelTime(1);
         }
         if (t === 35) {
