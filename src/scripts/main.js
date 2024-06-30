@@ -8,6 +8,7 @@ import BulletSpawnerInst from "./bulletSpawnerInst.js"
 import PowerUpInst from "./powerupinst.js";
 import ShapeExplosionEffectInst from "./shapeExplosionEffectInst.js";
 import PlayerExplosionEffectInst from "./playerExplosionEffectInst.js";
+import SnakeSegmentInst from "./snakeSegmentInst.js";
 import EggSpawnerInst from "./eggSpawnerInst.js";
 import AstroidSpawnerInst from "./astroidSpawnerInst.js";
 import { runGamescript } from "./gameScript.js";
@@ -15,13 +16,12 @@ import { resetAllGlobals } from "./global.js";
 import * as config from "./config.js";
 import { getScore, getIsGameOver } from "./global.js";
 import * as sfxManager from "./sfxManager.js";
-
 runOnStartup(async runtime => {
 	runtime.addEventListener("beforeprojectstart", () => OnBeforeProjectStart(runtime));	
 	runtime.objects.Player.setInstanceClass(PlayerInst);	
 	runtime.objects.BulletEnemy1.setInstanceClass(BulletEnemy1Inst);	
 	runtime.objects.EnemyBullet.setInstanceClass(EnemyBulletInst);	
-	
+	runtime.objects.Snake.setInstanceClass(SnakeSegmentInst);	
 	runtime.objects.EnemyBulletSpawner1.setInstanceClass(BulletSpawnerInst);
 	runtime.objects.Player.setInstanceClass(PlayerInst);	
 	runtime.objects.Astroid.setInstanceClass(AstroidEnemyInst);
@@ -93,6 +93,10 @@ function Tick(runtime) {
 
 		for (const enemyBullet of runtime.objects.EnemyBullet.instances()) {
 			enemyBullet.update(runtime);
+		}
+
+		for (const snakeSegment of runtime.objects.Snake.instances()) {
+			snakeSegment.update(runtime);
 		}
 
 		runtime.objects.ScoreText_ui.getFirstInstance().text = getScore().toString();

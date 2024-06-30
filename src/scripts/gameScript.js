@@ -3,6 +3,7 @@ import { getLevelTime, getCurrentWave, increaseLevelTime, increaseCurrentWave, r
 import * as config from "./config.js";
 import * as events from "./events.js";
 import * as sfxManager from "./sfxManager.js";
+import { spawnSnake } from "./Snake.js";
 
 const runEndofLevel = () => {
     window.dispatchEvent(new CustomEvent(events.levelEnd));
@@ -62,15 +63,15 @@ export const runGamescript = (runtime) => {
             runtime.objects.BulletEnemy1.createInstance(config.layers.game, 98, -100);
             increaseLevelTime(1);
         }
-        
+
         if (t === 3) {
-            runtime.objects.BulletEnemy1.createInstance(config.layers.game, 584, -100);            
+            runtime.objects.BulletEnemy1.createInstance(config.layers.game, 584, -100);
             increaseLevelTime(1);
         }
-        
+
         if (t === 4) {
             increaseLevelTime(1);
-            runtime.objects.BulletEnemy1.createInstance(config.layers.game, 310, -188);                        
+            runtime.objects.BulletEnemy1.createInstance(config.layers.game, 310, -188);
         }
         if (t === 25) {
             runEndofLevel();
@@ -88,6 +89,16 @@ export const runGamescript = (runtime) => {
             runtime.objects.EggSpawner.getFirstInstance().destroy();
             runEndofLevel();
             increaseLevelTime(1);
+        }
+    }
+
+    if (currentWave === 4) {
+        if (t === 0) {
+            spawnSnake(runtime, 10, 10, -20)
+            increaseLevelTime(1);
+        }
+        if (t === 35) {
+
         }
     }
 }

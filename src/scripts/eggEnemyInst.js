@@ -21,8 +21,7 @@ export default class EggEnemyInst extends enemyBase {
             bullet.setAnimation("0");
         }
     }
-
-
+    
     update(runtime) {
         this.bulletTicker += runtime.dt * 100;
 

@@ -179,7 +179,8 @@
 			"EnemyBullet",
 			"EnemyBulletSpawner1",
 			"BulletEnemy1",
-			"HitPoint"
+			"HitPoint",
+			"Snake"
 		],
 		"subfolders": []
 	},
@@ -388,6 +389,22 @@
 					"name": "enemyBulletInst.js",
 					"type": "application/javascript",
 					"sid": 791494644744602,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Snake.js",
+					"type": "application/javascript",
+					"sid": 551082003881310,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "snakeSegmentInst.js",
+					"type": "application/javascript",
+					"sid": 294436034255183,
 					"script-info": {
 						"purpose": "none"
 					}

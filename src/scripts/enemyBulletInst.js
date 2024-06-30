@@ -1,16 +1,27 @@
 import { getEnemyHasReachedCity } from "./global.js"
 import * as events from "./events.js";
 
-export default class EnemyBulletInst extends globalThis.ISpriteInstance {    
+export default class EnemyBulletInst extends globalThis.ISpriteInstance {
     constructor() {
         super();
+
         window.addEventListener(
             events.restartAfterKill,
             this.#handleRestartAfterKill,
-            false        
+            false
+        );
+
+        window.addEventListener(
+            events.levelEnd,
+            this.#handleLevelEnd,
+            false
         );
     }
     
+    #handleLevelEnd = () => {
+        this.destroy();
+    }
+
     #handleRestartAfterKill = () => {
         this.destroy();
     }
@@ -18,10 +29,10 @@ export default class EnemyBulletInst extends globalThis.ISpriteInstance {
     #handlePlayerCollision = (runtime) => {
         const player = runtime.objects.Player.getFirstInstance();
 
-        if (runtime.objects.HitPoint.getFirstInstance().testOverlap(this)) {			
+        if (runtime.objects.HitPoint.getFirstInstance().testOverlap(this)) {
             player.kill(runtime);
             this.destroy();
-		}
+        }
     }
 
     update = (runtime) => {
@@ -30,8 +41,7 @@ export default class EnemyBulletInst extends globalThis.ISpriteInstance {
                 this.behaviors["Bullet"].isEnabled = false
             }
         }
-        else
-        {
+        else {
             this.#handlePlayerCollision(runtime);
         }
     }
