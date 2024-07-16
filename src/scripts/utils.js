@@ -1,5 +1,5 @@
 // Calculate the angle in radians between two points.
-export const angleTo = (x1, y1, x2, y2) =>
+export const angleTo  = (x1, y1, x2, y2) =>
 	Math.atan2(y2 - y1, x2 - x1);
 
 // Calculate the distance between two points.

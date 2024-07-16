@@ -69,12 +69,15 @@ export default class EnemyBase extends globalThis.ISpriteInstance {
 		}
 	}
 
+	kill = (runtim) => {
+		addToScore(this.worth);
+		this.#destroy();
+		SfxMangager.PlayEnemyExplosion();
+	}
+
 	update(runtime) {
-		// May as well destory all enemies if the end up past the bottom of the screen.		
 		if (this.health < 0) {
-			addToScore(this.worth);
-			this.#destroy();
-			SfxMangager.PlayEnemyExplosion();
+			this.kill(runtime);
 		}
 
 		if (getEnemyHasReachedCity()) {

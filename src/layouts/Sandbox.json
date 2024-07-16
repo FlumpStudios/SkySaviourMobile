@@ -915,7 +915,7 @@
 						},
 						"Bullet": {
 							"properties": {
-								"speed": 250,
+								"speed": 275,
 								"acceleration": 0,
 								"gravity": 0,
 								"bounce-off-solids": false,
@@ -938,7 +938,7 @@
 							1,
 							1
 						],
-						"angle": 0.17453292519943295,
+						"angle": 0.2570224791090937,
 						"zElevation": 0
 					}
 				}

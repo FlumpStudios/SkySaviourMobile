@@ -33,7 +33,6 @@ export const runGamescript = (runtime) => {
         introMessage.isVisible = false;
     }
 
-
     if (currentWave > 1) {
         if (t === 0) {
             if (!powerUpSpawned) {
@@ -73,7 +72,7 @@ export const runGamescript = (runtime) => {
             increaseLevelTime(1);
             runtime.objects.BulletEnemy1.createInstance(config.layers.game, 310, -188);
         }
-        if (t === 25) {
+        if (t === 20) {
             runEndofLevel();
             increaseLevelTime(1);
         }
@@ -85,7 +84,7 @@ export const runGamescript = (runtime) => {
             spawner.spawnInterval = 2.5;
             increaseLevelTime(1);
         }
-        if (t === 35) {
+        if (t === 25) {
             runtime.objects.EggSpawner.getFirstInstance().destroy();
             runEndofLevel();
             increaseLevelTime(1);
@@ -94,11 +93,22 @@ export const runGamescript = (runtime) => {
 
     if (currentWave === 4) {
         if (t === 0) {
-            spawnSnake(runtime, 10, 10, -20)
+            spawnSnake(runtime, 5, 10, -20)
             increaseLevelTime(1);
         }
-        if (t === 35) {
 
+        if (t === 5) {
+            spawnSnake(runtime, 4, 250, -20)
+            increaseLevelTime(1);
+        }
+
+        if (t === 10) {
+            spawnSnake(runtime, 5, 500, -20)
+            increaseLevelTime(1);
+        }
+
+        if (t > 10 && runtime.objects.Snake.getAllInstances().length <= 0) {
+            runEndofLevel();
         }
     }
 }
