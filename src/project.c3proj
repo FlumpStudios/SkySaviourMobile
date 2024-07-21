@@ -180,7 +180,11 @@
 			"EnemyBulletSpawner1",
 			"BulletEnemy1",
 			"HitPoint",
-			"Snake"
+			"Snake",
+			"Truck",
+			"TruckWHeel",
+			"Man",
+			"Man_UI"
 		],
 		"subfolders": []
 	},
@@ -405,6 +409,14 @@
 					"name": "snakeSegmentInst.js",
 					"type": "application/javascript",
 					"sid": 294436034255183,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "manInstance.js",
+					"type": "application/javascript",
+					"sid": 754315095057792,
 					"script-info": {
 						"purpose": "none"
 					}

@@ -9,6 +9,7 @@ import PowerUpInst from "./powerupinst.js";
 import ShapeExplosionEffectInst from "./shapeExplosionEffectInst.js";
 import PlayerExplosionEffectInst from "./playerExplosionEffectInst.js";
 import SnakeSegmentInst from "./snakeSegmentInst.js";
+import ManInst from "./manInstance.js";
 import EggSpawnerInst from "./eggSpawnerInst.js";
 import AstroidSpawnerInst from "./astroidSpawnerInst.js";
 import { runGamescript } from "./gameScript.js";
@@ -32,6 +33,7 @@ runOnStartup(async runtime => {
 	runtime.objects.SquareShotEffect.setInstanceClass(ShapeExplosionEffectInst);
 	runtime.objects.EggSpawner.setInstanceClass(EggSpawnerInst);
 	runtime.objects.AstroidSpawner.setInstanceClass(AstroidSpawnerInst);
+	runtime.objects.Man.setInstanceClass(ManInst);
 });
 
 async function OnBeforeProjectStart(runtime) {
@@ -61,6 +63,10 @@ function Tick(runtime) {
 
 		for (const egg of runtime.objects.EggEnemy.instances()) {
 			egg.update(runtime);
+		}
+
+		for (const man of runtime.objects.Man.instances()) {
+			man.update(runtime);
 		}
 
 		for (const eggSpawner of runtime.objects.EggSpawner.instances()) {

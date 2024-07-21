@@ -162,6 +162,34 @@
 				}
 			],
 			"sid": 177506817600271
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "TruckWHeel",
+					"sid": 975978610195566
+				}
+			],
+			"actions": [
+				{
+					"id": "pin-to-object-properties",
+					"objectClass": "TruckWHeel",
+					"sid": 322777198301236,
+					"behaviorType": "Pin",
+					"parameters": {
+						"pin-to": "Truck",
+						"x": true,
+						"y": true,
+						"angle": false,
+						"width-type": "no",
+						"height-type": "no",
+						"z": false
+					}
+				}
+			],
+			"sid": 350103656138581
 		}
 	],
 	"sid": 640881692263834

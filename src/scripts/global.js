@@ -12,6 +12,12 @@ let bombCount = 1;
 let powerLevel = 0;
 let doubleShot = false;
 let playerMoveSpeed = config.moveSpeed;
+let collectedPeople = 0;
+
+
+export const addToCollectedPeople = () => collectedPeople++;
+export const getCollectedPeople = () => collectedPeople;
+export const resetCollectedPeopl = () => collectedPeople = 0;
 
 export const getPlayerMoveSpeed = () => playerMoveSpeed;
 
@@ -68,4 +74,6 @@ export const resetAllGlobals = () => {
     powerLevel = 0;
     doubleShot = false;
     playerMoveSpeed = config.moveSpeed;
+    collectedPeople = 0;
 }
+

@@ -29,4 +29,4 @@ export const bombPower = 10;
 export const maxBombCount = 3;
 export const maxPowerLevel = 2;
 export const snakeSegmentDistance = 27;
-export const startingLevel = 4;
+export const startingLevel = 1;

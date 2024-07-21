@@ -220,6 +220,19 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         }
     }
 
+    #handleManUi = (runtime) => {
+        const manSprites = runtime.objects.Man_UI.getAllInstances();
+        
+        for (let i = 0; i < manSprites.length; i++) {
+            if (i >= global.getCollectedPeople()) {
+                manSprites[i].isVisible = false;
+            }
+            else {
+                manSprites[i].isVisible = true;
+            }
+        }   
+    }
+
     updateMultiplier = (runtime) => {
         let m = 0;
         let multiplierText = runtime.objects.multiplierText.getFirstInstance();
@@ -330,6 +343,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
         this.updateMultiplier(runtime);
         this.handleWarning(runtime);
         this.#handleLivesUi(runtime);
+        this.#handleManUi(runtime);
 
         if (!this.#isReady) {
             if (this.height > this.#intialHeight) {

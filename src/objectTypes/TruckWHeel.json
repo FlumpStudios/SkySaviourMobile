@@ -1,0 +1,61 @@
+{
+	"name": "TruckWHeel",
+	"plugin-id": "Sprite",
+	"sid": 585213390916247,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Rotate",
+			"name": "Rotate",
+			"sid": 447622444112371
+		},
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 204319392621624
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 22,
+						"height": 22,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 7463340,
+						"collisionPoly": {
+							"points": [
+								0.045454545454545456,
+								0.045454545454545456,
+								0.9545454545454546,
+								0.045454545454545456,
+								0.9545454545454546,
+								0.9545454545454546,
+								0.045454545454545456,
+								0.9545454545454546
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 201596263132711,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}
