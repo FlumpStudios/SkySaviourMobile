@@ -184,7 +184,9 @@
 			"Truck",
 			"TruckWHeel",
 			"Man",
-			"Man_UI"
+			"Man_UI",
+			"Coin",
+			"CoinSpawner"
 		],
 		"subfolders": []
 	},
@@ -417,6 +419,14 @@
 					"name": "manInstance.js",
 					"type": "application/javascript",
 					"sid": 754315095057792,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "coinSpawnerInst.js",
+					"type": "application/javascript",
+					"sid": 831047055064937,
 					"script-info": {
 						"purpose": "none"
 					}
@@ -686,6 +696,14 @@
 					"name": "Powerup__001.webm",
 					"type": "audio/webm; codecs=opus",
 					"sid": 396319992797284,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "coin.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 932327618120849,
 					"file-info": {
 						"purpose": "none"
 					}

@@ -3,8 +3,10 @@ export const gameLayoutName = "Game";
 export const layers = {
     background: 0,
     game: 1,
-    ui: 2,
-    pause: 3
+    hitPoint: 2,
+    bonus: 3,
+    ui: 4,
+    pause: 5
 }
 
 export const maxMultiplier = 5;
@@ -29,4 +31,5 @@ export const bombPower = 10;
 export const maxBombCount = 3;
 export const maxPowerLevel = 2;
 export const snakeSegmentDistance = 27;
-export const startingLevel = 1;
+export const startingLevel = 1000;
+export const coinWorth = 10;

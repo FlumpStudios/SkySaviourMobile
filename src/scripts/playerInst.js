@@ -222,7 +222,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
 
     #handleManUi = (runtime) => {
         const manSprites = runtime.objects.Man_UI.getAllInstances();
-        
+
         for (let i = 0; i < manSprites.length; i++) {
             if (i >= global.getCollectedPeople()) {
                 manSprites[i].isVisible = false;
@@ -230,7 +230,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
             else {
                 manSprites[i].isVisible = true;
             }
-        }   
+        }
     }
 
     updateMultiplier = (runtime) => {
@@ -268,6 +268,16 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
             waitForMillisecond(850).then(() => {
                 this.#resetAfterKill();
             });
+        }
+    }
+
+    #handleCoinCollection = (runtime) => {
+        for (const coin of runtime.objects.Coin.getAllInstances()) {
+            if(coin.testOverlap(this)){
+                SfxManager.PlayCoinPickup();
+                coin.destroy();
+                global.addToScore(config.coinWorth);
+            }   
         }
     }
 
@@ -326,6 +336,10 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
 
         this.#handlePowerUpCollision(runtime);
         
+        // TODO: CHECK IF IN BONUS LEVEL FIRST
+        this.#handleCoinCollection(runtime);
+
+
         for (const turret of runtime.objects.Turret.getAllInstances()) {
             if (global.getPowerLevel() < 2) {
                 turret.isVisible = false;

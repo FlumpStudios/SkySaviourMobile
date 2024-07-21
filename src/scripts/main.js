@@ -1,3 +1,4 @@
+import CoinSpawnerInst from "./coinSpawnerInst.js"
 import PlayerInst from "./playerInst.js";
 import BulletInst from "./bulletInst.js";
 import EggEnemyInst from "./eggEnemyInst.js";
@@ -34,6 +35,8 @@ runOnStartup(async runtime => {
 	runtime.objects.EggSpawner.setInstanceClass(EggSpawnerInst);
 	runtime.objects.AstroidSpawner.setInstanceClass(AstroidSpawnerInst);
 	runtime.objects.Man.setInstanceClass(ManInst);
+	runtime.objects.CoinSpawner.setInstanceClass(CoinSpawnerInst);
+
 });
 
 async function OnBeforeProjectStart(runtime) {
@@ -103,6 +106,10 @@ function Tick(runtime) {
 
 		for (const snakeSegment of runtime.objects.Snake.instances()) {
 			snakeSegment.update(runtime);
+		}
+
+		for (const coinSpawner of runtime.objects.CoinSpawner.instances()) {
+			coinSpawner.update(runtime);
 		}
 
 		runtime.objects.ScoreText_ui.getFirstInstance().text = getScore().toString();

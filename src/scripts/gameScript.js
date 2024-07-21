@@ -40,7 +40,7 @@ export const runGamescript = (runtime) => {
     increaseLevelTime(runtime.dt);
 
     const t = Math.round(getLevelTime());
-    
+
     if (t > 0 && t === truckSpawnTime) {
         resetTruck(runtime);
     }
@@ -146,6 +146,14 @@ export const runGamescript = (runtime) => {
 
         if (t > 10 && runtime.objects.Snake.getAllInstances().length <= 0) {
             runEndofLevel();
+        }
+    }
+
+    // BONUS LEVEL
+    if (currentWave == 1000) {
+        if (t === 0) {
+            const spawner = runtime.objects.CoinSpawner.createInstance(config.layers.game, 352, -32);
+            increaseLevelTime(1);
         }
     }
 }
