@@ -119,7 +119,7 @@ export default class PlayerInst extends globalThis.ISpriteInstance {
                 if (global.getPowerLevel() < 1) {
                     runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x, this.y + config.shotOffsets.y);
                     if (global.getDoubleShot()) {
-                        waitForMillisecond(400).then(() => {
+                        waitForMillisecond(210).then(() => {
                             const secBullet = runtime.objects.Bullet.createInstance(config.layers.game, this.x + config.shotOffsets.x, this.y + config.shotOffsets.y);
                             secBullet.width = 24;
                             secBullet.height = 14;

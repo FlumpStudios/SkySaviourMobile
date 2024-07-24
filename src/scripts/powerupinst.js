@@ -25,24 +25,24 @@ export default class PowerUpInst extends globalThis.ISpriteInstance {
                     this.#chooseRandomPowerUp();
                     return;
                 }
-                response = "Gun";
+                response = "DoubleShot";
                 break;
             case 1:
                 if (global.getPlayerMoveSpeed() >= config.maxMoveSpeed) {
                     this.#chooseRandomPowerUp();
                     return;
                 }
-                response = "Speed";
+                response = "DoubleShot";
                 break;
             case 2:
-                response = "Points";
+                response = "DoubleShot";
                 break;
             case 3:
                 if (global.getBombCount() >= config.maxBombCount) {
                     this.#chooseRandomPowerUp();
                     return;
                 }
-                response = "Bomb";
+                response = "DoubleShot";
                 break;
             case 4:
                 if (global.getDoubleShot()) {
@@ -52,7 +52,7 @@ export default class PowerUpInst extends globalThis.ISpriteInstance {
                 response = "DoubleShot";
                 break;
             default:
-                response = "Points";
+                response = "DoubleShot";
                 break;
         }
         if (this.#currentPowerUp === response) {
